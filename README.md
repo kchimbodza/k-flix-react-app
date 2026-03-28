@@ -36,30 +36,18 @@ npm start
 ```
 
 ## Features
-
-### Grade B — Guest Features
-- Trending movies homepage
-- Movie search by keyword
-- Movie detail page (poster, title, release date, overview, rating, genres)
-- Heart overlay to add/remove favourites (localStorage)
-- Registration prompts for guest users
-- Responsive design (mobile and desktop)
-
-### Grade B+ — Authentication & Advanced Search
-- User registration with client-side validation
-- User login and logout with session persistence
-- Profile page with favourites and watchlists
-- Per-user persistent favourites
+- Browse trending movies updated daily
+- Search movies by keyword
 - Advanced search with genre, year, rating and language filters
+- Full movie detail pages with genres, ratings and overview
+- User registration and login
+- Personal profile page
+- Add movies to favourites with heart overlay
+- Create and manage custom watchlists
+- Add and remove movies from watchlists
+- Share watchlists
 - Protected routes for authenticated users
-
-### Grade A — Watchlist Manager
-- Create named watchlists
-- Add movies to watchlists from movie detail page
-- Remove individual movies from watchlists
-- Delete watchlists
-- Watchlist detail page with share functionality
-- Profile integration showing all watchlists
+- Responsive design for mobile and desktop
 
 ## Tech Stack
 - React 19 + Vite

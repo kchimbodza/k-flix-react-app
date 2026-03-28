@@ -1,16 +1,31 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import { useAuth } from './AuthContext'
 
 const FavouritesContext = createContext()
 
 export const FavouritesProvider = ({ children }) => {
+    const { user } = useAuth()
+
     const [favourites, setFavourites] = useState(() => {
-        const saved = localStorage.getItem('favourites')
+        if (!user) return []
+        const saved = localStorage.getItem(`favourites_${user.id}`)
         return saved ? JSON.parse(saved) : []
     })
 
     useEffect(() => {
-        localStorage.setItem('favourites', JSON.stringify(favourites))
-    }, [favourites])
+        if (!user) {
+            setFavourites([])
+            return
+        }
+        const saved = localStorage.getItem(`favourites_${user.id}`)
+        setFavourites(saved ? JSON.parse(saved) : [])
+    }, [user])
+
+    useEffect(() => {
+        if (user) {
+            localStorage.setItem(`favourites_${user.id}`, JSON.stringify(favourites))
+        }
+    }, [favourites, user])
 
     const addFavourite = (movie) => {
         setFavourites(prev => [...prev, movie])
@@ -31,5 +46,4 @@ export const FavouritesProvider = ({ children }) => {
     )
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useFavourites = () => useContext(FavouritesContext)

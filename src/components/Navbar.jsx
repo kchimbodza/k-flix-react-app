@@ -18,6 +18,7 @@ const Navbar = () => {
                 <Link to="/search" className="text-gray-300 hover:text-white text-sm">Search</Link>
                 {user ? (
                     <>
+                        <Link to="/advanced-search" className="text-gray-300 hover:text-white text-sm">Advanced Search</Link>
                         <Link to="/favorites" className="text-gray-300 hover:text-white text-sm">Favourites</Link>
                         <Link to="/watchlists" className="text-gray-300 hover:text-white text-sm">Watchlists</Link>
                         <Link to="/profile" className="text-gray-300 hover:text-white text-sm">Profile</Link>

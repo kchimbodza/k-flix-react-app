@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { searchMovies } from '../services/tmdb'
+import { useAuth } from '../context/AuthContext'
 import MovieCard from '../components/MovieCard'
 
 const Search = () => {
@@ -7,6 +9,7 @@ const Search = () => {
     const [movies, setMovies] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
+    const { user } = useAuth()
 
     const handleSearch = async () => {
         if (!query.trim()) return
@@ -16,7 +19,6 @@ const Search = () => {
             const data = await searchMovies(query)
             if (data.length === 0) setError('No movies found')
             setMovies(data)
-            // eslint-disable-next-line no-unused-vars
         } catch (err) {
             setError('Search failed. Please try again.')
         } finally {
@@ -30,7 +32,13 @@ const Search = () => {
 
     return (
         <div className="p-6">
-            <h1 className="text-3xl font-bold text-center text-white mb-6">Search Movies</h1>
+            <h1 className="text-3xl font-bold text-center text-white mb-2">Search Movies</h1>
+            {user && (
+                <p className="text-center text-gray-400 mb-4">
+                    Looking for more filters?{' '}
+                    <Link to="/advanced-search" className="text-red-500 hover:underline">Try Advanced Search</Link>
+                </p>
+            )}
             <div className="flex gap-2 max-w-xl mx-auto mb-6">
                 <input
                     type="text"

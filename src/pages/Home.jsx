@@ -21,8 +21,8 @@ const Home = () => {
         fetchMovies()
     }, [])
 
-    if (loading) return <div>Loading...</div>
-    if (error) return <div>{error}</div>
+    if (loading) return <div className="text-white text-center mt-10">Loading...</div>
+    if (error) return <div className="text-red-500 text-center mt-10">{error}</div>
 
     return (
         <div className="p-6">

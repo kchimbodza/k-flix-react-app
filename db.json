@@ -16,28 +16,6 @@
   "favourites": [
     {
       "userId": "2I1pxhMALW0",
-      "movieId": 1628116,
-      "adult": false,
-      "backdrop_path": "/l7NTdhTin8quQ8V2ukD4Zd48EPX.jpg",
-      "id": "riG9F2BEuFg",
-      "title": "BTS: THE RETURN",
-      "original_title": "BTS: 더 리턴",
-      "overview": "They're back! BTS gathers in LA to record their album \"Arirang\" in this documentary offering unprecedented access to the band as they enter a new era.",
-      "poster_path": "/9CNUWleZWN9EGMZjvaSTcxmAAGg.jpg",
-      "media_type": "movie",
-      "original_language": "ko",
-      "genre_ids": [
-        99,
-        10402
-      ],
-      "popularity": 12.0024,
-      "release_date": "2026-03-27",
-      "video": false,
-      "vote_average": 9.3,
-      "vote_count": 3
-    },
-    {
-      "userId": "2I1pxhMALW0",
       "movieId": 1115544,
       "adult": false,
       "backdrop_path": "/uNToXatdunyvWXyXMrTI1nLvh6r.jpg",
@@ -84,29 +62,6 @@
       "video": false,
       "vote_average": 6,
       "vote_count": 2
-    },
-    {
-      "userId": "2I1pxhMALW0",
-      "movieId": 1265609,
-      "adult": false,
-      "backdrop_path": "/6yeVcxFR0j08vlv2OlL6zbewm4D.jpg",
-      "id": "F6t9sY6ZQ0s",
-      "title": "War Machine",
-      "original_title": "War Machine",
-      "overview": "On one last grueling mission during Army Ranger training, a combat engineer must lead his unit in a fight against a giant otherworldly killing machine.",
-      "poster_path": "/tlPgDzwIE7VYYIIAGCTUOnN4wI1.jpg",
-      "media_type": "movie",
-      "original_language": "en",
-      "genre_ids": [
-        28,
-        878,
-        53
-      ],
-      "popularity": 227.9888,
-      "release_date": "2026-02-12",
-      "video": false,
-      "vote_average": 7.27,
-      "vote_count": 1196
     }
   ],
   "watchlists": [

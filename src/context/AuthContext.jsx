@@ -1,6 +1,6 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useState } from 'react'
 
-const AuthContext = createContext()
+const AuthContext = createContext(undefined)
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(() => {
@@ -25,4 +25,5 @@ export const AuthProvider = ({ children }) => {
     )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => useContext(AuthContext)

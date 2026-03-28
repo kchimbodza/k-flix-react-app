@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react'
 import { useAuth } from './AuthContext'
 import { getUserFavourites, addUserFavourite, removeUserFavourite } from '../services/api'
 
-const FavouritesContext = createContext()
+const FavouritesContext = createContext(undefined)
 
 export const FavouritesProvider = ({ children }) => {
     const { user } = useAuth()

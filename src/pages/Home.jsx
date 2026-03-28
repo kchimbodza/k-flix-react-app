@@ -25,9 +25,9 @@ const Home = () => {
     if (error) return <div>{error}</div>
 
     return (
-        <div>
-            <h1>Trending Movies</h1>
-            <div>
+        <div className="p-6">
+            <h1 className="text-3xl font-bold text-center text-white mb-6">Trending Movies</h1>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
                 {movies.map(movie => (
                     <MovieCard key={movie.id} movie={movie} />
                 ))}

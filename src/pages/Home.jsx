@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getTrending } from '../services/tmdb'
+import MovieCard from '../components/MovieCard'
 
 const Home = () => {
     const [movies, setMovies] = useState([])
@@ -26,11 +27,11 @@ const Home = () => {
     return (
         <div>
             <h1>Trending Movies</h1>
-            {movies.map(movie => (
-                <div key={movie.id}>
-                    <h2>{movie.title}</h2>
-                </div>
-            ))}
+            <div>
+                {movies.map(movie => (
+                    <MovieCard key={movie.id} movie={movie} />
+                ))}
+            </div>
         </div>
     )
 }

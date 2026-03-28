@@ -12,6 +12,7 @@ const WatchlistDetail = () => {
     const [watchlist, setWatchlist] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    // noinspection JSUnresolvedVariable
     const IMAGE_URL = import.meta.env.VITE_TMDB_IMAGE_URL
 
     useEffect(() => {
@@ -21,21 +22,21 @@ const WatchlistDetail = () => {
                 const found = data.find(w => w.id === id)
                 if (!found) setError('Watchlist not found')
                 setWatchlist(found)
-            } catch (err) {
+            } catch {
                 setError('Failed to load watchlist')
             } finally {
                 setLoading(false)
             }
         }
-        fetchWatchlist()
-    }, [id])
+        void fetchWatchlist()
+    }, [id, user.id])
 
     const handleRemoveMovie = async (movieId) => {
         const updated = watchlist.movies.filter(m => m.id !== movieId)
         try {
             await updateWatchlist(id, { movies: updated })
             setWatchlist(prev => ({ ...prev, movies: updated }))
-        } catch (err) {
+        } catch {
             setError('Failed to remove movie')
         }
     }
@@ -48,7 +49,7 @@ const WatchlistDetail = () => {
                 url: window.location.href
             })
         } else {
-            navigator.clipboard.writeText(window.location.href)
+            await navigator.clipboard.writeText(window.location.href)
             alert('Link copied to clipboard!')
         }
     }

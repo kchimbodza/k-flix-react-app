@@ -31,7 +31,7 @@ const Register = () => {
             const newUser = await registerUser({ name, email, password })
             login(newUser)
             navigate('/')
-        } catch (err) {
+        } catch {
             setError('Registration failed. Please try again.')
         } finally {
             setLoading(false)

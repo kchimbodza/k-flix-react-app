@@ -20,7 +20,7 @@ const AdvancedSearch = () => {
             const data = await getGenres()
             setGenres(data)
         }
-        fetchGenres()
+        void fetchGenres()
     }, [])
 
     const handleChange = (e) => {
@@ -34,7 +34,7 @@ const AdvancedSearch = () => {
             const data = await discoverMovies(filters)
             if (data.length === 0) setError('No movies found')
             setMovies(data)
-        } catch (err) {
+        } catch {
             setError('Search failed. Please try again.')
         } finally {
             setLoading(false)

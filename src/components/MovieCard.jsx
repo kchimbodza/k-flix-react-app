@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useFavourites } from '../context/FavouritesContext'
 import { useAuth } from '../context/AuthContext'
-
+// noinspection JSUnresolvedVariable
 const IMAGE_URL = import.meta.env.VITE_TMDB_IMAGE_URL
 
 const MovieCard = ({ movie, showHeartOnHover = false }) => {
@@ -12,13 +12,14 @@ const MovieCard = ({ movie, showHeartOnHover = false }) => {
     const favourited = isFavourite(movie.id)
     const [showPopup, setShowPopup] = useState(false)
 
-    const handleFavourite = (e) => {
+    const handleFavourite = async (e) => {
         e.preventDefault()
+        e.stopPropagation()
         if (!user) {
             setShowPopup(true)
             return
         }
-        favourited ? removeFavourite(movie.id) : addFavourite(movie)
+        favourited ? await removeFavourite(movie.id) : await addFavourite(movie)
     }
 
     return (

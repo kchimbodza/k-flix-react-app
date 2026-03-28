@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import { useFavourites } from '../context/FavouritesContext'
+import { useAuth } from '../context/AuthContext'
 import MovieCard from '../components/MovieCard'
 
 const Favourites = () => {
     const { favourites } = useFavourites()
+    const { user } = useAuth()
 
     return (
         <div className="p-6">
@@ -13,12 +15,25 @@ const Favourites = () => {
                     <p className="text-gray-400 mb-4">
                         You haven't added any favourites yet!
                     </p>
-                    <p className="text-gray-500 mb-4">
-                        Create an account to save favourites permanently across devices!
-                    </p>
-                    <Link to="/register" className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">
-                        Create Account
-                    </Link>
+                    {user ? (
+                        <>
+                            <p className="text-gray-500 mb-4">
+                                Browse movies and click the heart to save them here.
+                            </p>
+                            <Link to="/" className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">
+                                Browse Movies
+                            </Link>
+                        </>
+                    ) : (
+                        <>
+                            <p className="text-gray-500 mb-4">
+                                Create an account to save favourites permanently across devices!
+                            </p>
+                            <Link to="/register" className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">
+                                Create Account
+                            </Link>
+                        </>
+                    )}
                 </div>
             ) : (
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">

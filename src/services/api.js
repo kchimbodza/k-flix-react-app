@@ -10,10 +10,9 @@ export const registerUser = async (userData) => {
 
 export const loginUser = async (email, password) => {
     const response = await axios.get(`${BASE_URL}/users`)
-    const user = response.data.find(
+    return response.data.find(
         (u) => u.email === email && u.password === password
     )
-    return user
 }
 
 // Favourites
@@ -23,7 +22,11 @@ export const getUserFavourites = async (userId) => {
 }
 
 export const addUserFavourite = async (userId, movie) => {
-    const response = await axios.post(`${BASE_URL}/favourites`, { userId, ...movie })
+    const response = await axios.post(`${BASE_URL}/favourites`, {
+        userId,
+        movieId: movie.id,
+        ...movie
+    })
     return response.data
 }
 

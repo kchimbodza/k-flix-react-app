@@ -12,13 +12,13 @@ const Home = () => {
             try {
                 const data = await getTrending()
                 setMovies(data)
-            } catch (err) {
+            } catch {
                 setError('Failed to fetch movies')
             } finally {
                 setLoading(false)
             }
         }
-        fetchMovies()
+        void fetchMovies()
     }, [])
 
     if (loading) return <div className="text-white text-center mt-10">Loading...</div>

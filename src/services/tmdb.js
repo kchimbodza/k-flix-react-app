@@ -1,6 +1,9 @@
 import axios from 'axios'
 
+// noinspection JSUnresolvedVariable
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY
+
+// noinspection JSUnresolvedVariable
 const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL
 
 export const getTrending = async () => {

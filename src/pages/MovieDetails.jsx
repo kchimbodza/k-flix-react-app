@@ -8,7 +8,14 @@ import { getUserWatchlists, updateWatchlist } from '../services/api'
 const MovieDetails = () => {
     const { id } = useParams()
     const navigate = useNavigate()
-    const [movie, setMovie] = useState(null)
+    const [movie, setMovie] = useState({
+        poster_path: '',
+        title: '',
+        release_date: '',
+        vote_average: 0,
+        genres: [],
+        overview: ''
+    })
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const [showPopup, setShowPopup] = useState(false)
@@ -17,6 +24,7 @@ const MovieDetails = () => {
     const [watchlistMessage, setWatchlistMessage] = useState(null)
     const { isFavourite, addFavourite, removeFavourite } = useFavourites()
     const { user } = useAuth()
+    // noinspection JSUnresolvedVariable
     const IMAGE_URL = import.meta.env.VITE_TMDB_IMAGE_URL
 
     useEffect(() => {
@@ -24,20 +32,20 @@ const MovieDetails = () => {
             try {
                 const data = await getMovieDetails(id)
                 setMovie(data)
-            } catch (err) {
+            } catch {
                 setError('Failed to fetch movie details')
             } finally {
                 setLoading(false)
             }
         }
-        fetchMovie()
+        void fetchMovie()
     }, [id])
 
     useEffect(() => {
         if (user && watchlists.length === 0) {
             getUserWatchlists(user.id).then(setWatchlists)
         }
-    }, [user])
+    }, [user, watchlists.length])
 
     if (loading) return <div className="text-white text-center mt-10">Loading...</div>
     if (error) return <div className="text-red-500 text-center mt-10">{error}</div>
@@ -51,13 +59,17 @@ const MovieDetails = () => {
 
     const handleShare = async () => {
         if (navigator.share) {
-            await navigator.share({
-                title: movie.title,
-                text: `Check out ${movie.title} on K-Flix!`,
-                url: window.location.href
-            })
+            try {
+                await navigator.share({
+                    title: movie.title,
+                    text: `Check out ${movie.title} on K-Flix!`,
+                    url: window.location.href
+                })
+            } catch {
+                // user canceled share
+            }
         } else {
-            navigator.clipboard.writeText(window.location.href)
+            await navigator.clipboard.writeText(window.location.href)
             alert('Link copied to clipboard!')
         }
     }
@@ -131,7 +143,7 @@ const MovieDetails = () => {
                                     {showWatchlistMenu && (
                                         <div className="absolute top-10 left-0 bg-gray-800 rounded-lg shadow-lg z-10 w-48">
                                             {watchlists.length === 0 ? (
-                                                <p className="text-gray-400 text-sm p-3">No watchlists yet!</p>
+                                                <p className="text-gray-400 text-sm p-3">No watchlist yet!</p>
                                             ) : (
                                                 watchlists.map(w => (
                                                     <button

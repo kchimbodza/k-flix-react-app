@@ -4,6 +4,9 @@ import { useAuth } from '../context/AuthContext'
 import { useFavourites } from '../context/FavouritesContext'
 import { getUserWatchlists, createWatchlist, deleteWatchlist } from '../services/api'
 
+// noinspection JSUnresolvedVariable
+const IMAGE_URL = import.meta.env.VITE_TMDB_IMAGE_URL
+
 const Watchlists = () => {
     const { user } = useAuth()
     const { isFavourite } = useFavourites()
@@ -17,14 +20,14 @@ const Watchlists = () => {
             try {
                 const data = await getUserWatchlists(user.id)
                 setWatchlists(data)
-            } catch (err) {
+            } catch {
                 setError('Failed to load watchlists')
             } finally {
                 setLoading(false)
             }
         }
-        fetchWatchlists()
-    }, [])
+        void fetchWatchlists()
+    }, [user.id])
 
     const handleCreate = async () => {
         if (!newName.trim()) return
@@ -32,7 +35,7 @@ const Watchlists = () => {
             const created = await createWatchlist(user.id, newName)
             setWatchlists(prev => [...prev, created])
             setNewName('')
-        } catch (err) {
+        } catch {
             setError('Failed to create watchlist')
         }
     }
@@ -41,7 +44,7 @@ const Watchlists = () => {
         try {
             await deleteWatchlist(id)
             setWatchlists(prev => prev.filter(w => w.id !== id))
-        } catch (err) {
+        } catch {
             setError('Failed to delete watchlist')
         }
     }
@@ -60,7 +63,7 @@ const Watchlists = () => {
                         type="text"
                         value={newName}
                         onChange={(e) => setNewName(e.target.value)}
-                        onKeyPress={(e) => e.key === 'Enter' && handleCreate()}
+                        onKeyDown={(e) => e.key === 'Enter' && void handleCreate()}
                         placeholder="Watchlist name..."
                         className="flex-1 p-2 rounded bg-gray-700 text-white"
                     />
@@ -105,7 +108,7 @@ const Watchlists = () => {
                                     {watchlist.movies.slice(0, 3).map(movie => (
                                         <div key={movie.id} className="relative">
                                             <img
-                                                src={`${import.meta.env.VITE_TMDB_IMAGE_URL}${movie.poster_path}`}
+                                                src={`${IMAGE_URL}${movie.poster_path}`}
                                                 alt={movie.title}
                                                 className="w-16 h-24 object-cover rounded"
                                             />

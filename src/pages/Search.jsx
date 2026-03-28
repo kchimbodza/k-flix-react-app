@@ -19,7 +19,7 @@ const Search = () => {
             const data = await searchMovies(query)
             if (data.length === 0) setError('No movies found')
             setMovies(data)
-        } catch (err) {
+        } catch {
             setError('Search failed. Please try again.')
         } finally {
             setLoading(false)
@@ -27,7 +27,7 @@ const Search = () => {
     }
 
     const handleKeyPress = (e) => {
-        if (e.key === 'Enter') handleSearch()
+        if (e.key === 'Enter') void handleSearch()
     }
 
     return (

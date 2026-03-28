@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext'
 
 const IMAGE_URL = import.meta.env.VITE_TMDB_IMAGE_URL
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, showHeartOnHover = false }) => {
     const year = movie.release_date?.split("-")[0]
     const { isFavourite, addFavourite, removeFavourite } = useFavourites()
     const { user } = useAuth()
@@ -37,6 +37,7 @@ const MovieCard = ({ movie }) => {
                             </Link>
                         </div>
                         <button
+                            type="button"
                             onClick={() => setShowPopup(false)}
                             className="mt-4 text-gray-500 text-sm hover:text-white"
                         >
@@ -47,23 +48,39 @@ const MovieCard = ({ movie }) => {
             )}
             <Link to={`/movies/${movie.id}`}>
                 <div className="bg-gray-800 rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300">
-                    <img
-                        src={`${IMAGE_URL}${movie.poster_path}`}
-                        alt={movie.title}
-                        className="w-full h-72 object-cover"
-                    />
+                    <div className="relative group">
+                        <img
+                            src={`${IMAGE_URL}${movie.poster_path}`}
+                            alt={movie.title}
+                            className="w-full h-72 object-cover"
+                        />
+                        {user ? (
+                            <button
+                                type="button"
+                                onClick={handleFavourite}
+                                className={`absolute top-2 right-2 text-2xl drop-shadow-lg transition-opacity duration-200
+                                    ${showHeartOnHover && !favourited ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}
+                                title={favourited ? 'Remove from Favourites' : 'Add to Favourites'}
+                            >
+                                {favourited ? '❤️' : '🤍'}
+                            </button>
+                        ) : (
+                            <button
+                                type="button"
+                                onClick={handleFavourite}
+                                className="absolute top-2 right-2 text-2xl drop-shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                                title="Sign up to add favourites"
+                            >
+                                🤍
+                            </button>
+                        )}
+                    </div>
                     <div className="p-3">
                         <h3 className="text-white font-semibold text-sm truncate">{movie.title}</h3>
                         <div className="flex justify-between mt-1">
                             <p className="text-yellow-400 text-sm">⭐ {movie.vote_average?.toFixed(1)}</p>
                             <p className="text-gray-400 text-sm">{year}</p>
                         </div>
-                        <button
-                            onClick={handleFavourite}
-                            className="mt-2 w-full text-sm py-1 rounded bg-gray-700 text-white hover:bg-red-600"
-                        >
-                            {favourited ? '❤️ Remove' : '🤍 Favourite'}
-                        </button>
                     </div>
                 </div>
             </Link>

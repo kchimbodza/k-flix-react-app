@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { getMovieDetails } from '../services/tmdb'
 import { useFavourites } from '../context/FavouritesContext'
 import { useAuth } from '../context/AuthContext'
-import { Link } from 'react-router-dom'
+import { getUserWatchlists, updateWatchlist } from '../services/api'
 
 const MovieDetails = () => {
     const { id } = useParams()
+    const navigate = useNavigate()
     const [movie, setMovie] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const [showPopup, setShowPopup] = useState(false)
+    const [watchlists, setWatchlists] = useState([])
+    const [showWatchlistMenu, setShowWatchlistMenu] = useState(false)
+    const [watchlistMessage, setWatchlistMessage] = useState(null)
     const { isFavourite, addFavourite, removeFavourite } = useFavourites()
     const { user } = useAuth()
     const IMAGE_URL = import.meta.env.VITE_TMDB_IMAGE_URL
@@ -29,17 +33,46 @@ const MovieDetails = () => {
         fetchMovie()
     }, [id])
 
+    useEffect(() => {
+        if (user && watchlists.length === 0) {
+            getUserWatchlists(user.id).then(setWatchlists)
+        }
+    }, [user])
+
     if (loading) return <div className="text-white text-center mt-10">Loading...</div>
     if (error) return <div className="text-red-500 text-center mt-10">{error}</div>
 
     const favourited = isFavourite(movie.id)
 
     const handleFavourite = () => {
-        if (!user) {
-            setShowPopup(true)
+        if (!user) { setShowPopup(true); return }
+        favourited ? removeFavourite(movie.id) : addFavourite(movie)
+    }
+
+    const handleShare = async () => {
+        if (navigator.share) {
+            await navigator.share({
+                title: movie.title,
+                text: `Check out ${movie.title} on K-Flix!`,
+                url: window.location.href
+            })
+        } else {
+            navigator.clipboard.writeText(window.location.href)
+            alert('Link copied to clipboard!')
+        }
+    }
+
+    const handleAddToWatchlist = async (watchlist) => {
+        const alreadyAdded = watchlist.movies?.some(m => m.id === movie.id)
+        setShowWatchlistMenu(false)
+        if (alreadyAdded) {
+            setWatchlistMessage(`Already in "${watchlist.name}"`)
+            setTimeout(() => setWatchlistMessage(null), 3000)
             return
         }
-        favourited ? removeFavourite(movie.id) : addFavourite(movie)
+        const updatedMovies = [...(watchlist.movies || []), movie]
+        await updateWatchlist(watchlist.id, { movies: updatedMovies })
+        navigate(`/watchlists/${watchlist.id}`)
     }
 
     return (
@@ -50,17 +83,10 @@ const MovieDetails = () => {
                         <h2 className="text-white text-xl font-bold mb-2">Join K-Flix!</h2>
                         <p className="text-gray-400 mb-4">Create an account to save your favourite movies permanently.</p>
                         <div className="flex gap-3 justify-center">
-                            <Link to="/register" className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
-                                Sign Up
-                            </Link>
-                            <Link to="/login" className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">
-                                Login
-                            </Link>
+                            <Link to="/register" className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Sign Up</Link>
+                            <Link to="/login" className="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">Login</Link>
                         </div>
-                        <button
-                            onClick={() => setShowPopup(false)}
-                            className="mt-4 text-gray-500 text-sm hover:text-white"
-                        >
+                        <button type="button" onClick={() => setShowPopup(false)} className="mt-4 text-gray-500 text-sm hover:text-white">
                             Maybe later
                         </button>
                     </div>
@@ -80,17 +106,61 @@ const MovieDetails = () => {
                         <div className="flex gap-2 mb-4 flex-wrap">
                             {movie.genres?.map(genre => (
                                 <span key={genre.id} className="bg-red-600 text-white px-3 py-1 rounded-full text-sm">
-                  {genre.name}
-                </span>
+                                    {genre.name}
+                                </span>
                             ))}
                         </div>
                         <p className="text-gray-300 leading-relaxed mb-6">{movie.overview}</p>
-                        <button
-                            onClick={handleFavourite}
-                            className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700"
-                        >
-                            {favourited ? '❤️ Remove from Favourites' : '🤍 Add to Favourites'}
-                        </button>
+                        <div className="flex items-center gap-3 flex-wrap">
+                            <button
+                                type="button"
+                                onClick={handleFavourite}
+                                className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700"
+                            >
+                                {favourited ? '❤️ Remove from Favourites' : '🤍 Add to Favourites'}
+                            </button>
+                            {user && (
+                                <div className="relative">
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowWatchlistMenu(!showWatchlistMenu)}
+                                        className="bg-gray-700 text-white px-6 py-2 rounded hover:bg-gray-600"
+                                    >
+                                        + Add to Watchlist
+                                    </button>
+                                    {showWatchlistMenu && (
+                                        <div className="absolute top-10 left-0 bg-gray-800 rounded-lg shadow-lg z-10 w-48">
+                                            {watchlists.length === 0 ? (
+                                                <p className="text-gray-400 text-sm p-3">No watchlists yet!</p>
+                                            ) : (
+                                                watchlists.map(w => (
+                                                    <button
+                                                        type="button"
+                                                        key={w.id}
+                                                        onClick={() => handleAddToWatchlist(w)}
+                                                        className="block w-full text-left px-4 py-2 text-white hover:bg-gray-700 text-sm"
+                                                    >
+                                                        {w.name}
+                                                    </button>
+                                                ))
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+                            <button
+                                type="button"
+                                onClick={handleShare}
+                                className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+                            >
+                                🔗 Share
+                            </button>
+                            {watchlistMessage && (
+                                <span className="text-green-400 text-sm font-medium">
+                                    ✅ {watchlistMessage}
+                                </span>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

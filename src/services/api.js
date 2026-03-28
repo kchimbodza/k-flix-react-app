@@ -30,3 +30,23 @@ export const addUserFavourite = async (userId, movie) => {
 export const removeUserFavourite = async (id) => {
     await axios.delete(`${BASE_URL}/favourites/${id}`)
 }
+
+// Watchlists
+export const getUserWatchlists = async (userId) => {
+    const response = await axios.get(`${BASE_URL}/watchlists?userId=${userId}`)
+    return response.data
+}
+
+export const createWatchlist = async (userId, name) => {
+    const response = await axios.post(`${BASE_URL}/watchlists`, { userId, name, movies: [] })
+    return response.data
+}
+
+export const updateWatchlist = async (id, data) => {
+    const response = await axios.patch(`${BASE_URL}/watchlists/${id}`, data)
+    return response.data
+}
+
+export const deleteWatchlist = async (id) => {
+    await axios.delete(`${BASE_URL}/watchlists/${id}`)
+}

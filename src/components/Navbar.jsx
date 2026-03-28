@@ -1,8 +1,14 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 const Navbar = () => {
     const { user, logout } = useAuth()
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        logout()
+        navigate('/')
+    }
 
     return (
         <nav className="bg-gray-900 px-6 py-4 flex items-center justify-between sticky top-0 z-40">
@@ -15,7 +21,7 @@ const Navbar = () => {
                         <Link to="/favorites" className="text-gray-300 hover:text-white text-sm">Favourites</Link>
                         <Link to="/watchlists" className="text-gray-300 hover:text-white text-sm">Watchlists</Link>
                         <Link to="/profile" className="text-gray-300 hover:text-white text-sm">Profile</Link>
-                        <button onClick={logout} className="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700">
+                        <button onClick={handleLogout} className="bg-red-600 text-white px-3 py-1 rounded text-sm hover:bg-red-700">
                             Logout
                         </button>
                     </>

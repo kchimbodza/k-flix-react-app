@@ -21,6 +21,11 @@ export const getMovieDetails = async (id) => {
     return response.data
 }
 
+export const getSimilarMovies = async (id) => {
+    const response = await axios.get(`${BASE_URL}/movie/${id}/similar?api_key=${API_KEY}`)
+    return response.data.results
+}
+
 export const discoverMovies = async (filters) => {
     const { genre, yearFrom, yearTo, rating, language } = filters
     const response = await axios.get(`${BASE_URL}/discover/movie`, {

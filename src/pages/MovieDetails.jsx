@@ -35,6 +35,7 @@ const MovieDetails = () => {
     const [watchlistMessage, setWatchlistMessage] = useState(null)
     const { isFavourite, addFavourite, removeFavourite } = useFavourites()
     const { user } = useAuth()
+    const [copied, setCopied] = useState(false)
 
     useEffect(() => {
         const fetchMovie = async () => {
@@ -94,7 +95,8 @@ const MovieDetails = () => {
             }
         } else {
             await navigator.clipboard.writeText(window.location.href)
-            alert('Link copied to clipboard!')
+            setCopied(true)
+            setTimeout(() => setCopied(false), 3000)
         }
     }
 
@@ -120,7 +122,7 @@ const MovieDetails = () => {
                         <h2 className="text-white text-2xl font-bold mb-2">Join K-Flix!</h2>
                         <p className="text-gray-400 mb-6">Create an account to save your favourite movies permanently.</p>
                         <div className="flex gap-3 justify-center">
-                            <Link to="/register" className="bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-700 font-semibold">Sign Up</Link>
+                            <Link to="/register" className="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 font-semibold">Sign Up</Link>
                             <Link to="/login" className="bg-white/10 text-white px-6 py-2 rounded-full hover:bg-white/20">Login</Link>
                         </div>
                         <button type="button" onClick={() => setShowPopup(false)} className="mt-5 text-gray-500 text-sm hover:text-white">
@@ -146,7 +148,6 @@ const MovieDetails = () => {
                 )}
 
                 {/* Content */}
-                {/*<div className="relative z-10 w-full mx-auto px-6 py-16 flex flex-col md:flex-row gap-10 items-start">*/}
                 <div className="relative z-10 w-full px-16 py-16 flex flex-col md:flex-row gap-10 items-start">
 
                     {/* Poster */}
@@ -154,7 +155,6 @@ const MovieDetails = () => {
                         <img
                             src={`${IMAGE_URL}${movie.poster_path}`}
                             alt={movie.title}
-
                             className="w-96 lg:w-[480px] rounded-4xl shadow-2xl shadow-black/60 border border-white/10"
                         />
                     </div>
@@ -189,12 +189,12 @@ const MovieDetails = () => {
                             </p>
                         </div>
 
-                        {/* Action buttons — aligned to bottom */}
+                        {/* Action buttons */}
                         <div className="flex items-center gap-3 flex-wrap mt-6">
                             <button
                                 type="button"
                                 onClick={handleFavourite}
-                                className="flex items-center gap-2 bg-white text-gray-950 px-7 py-3 rounded-full font-bold hover:bg-gray-200 transition-all"
+                                className="flex items-center gap-2 bg-white text-gray-950 px-7 py-3 rounded-full font-bold hover:bg-gray-200 transition-all whitespace-nowrap"
                             >
                                 {favourited ? '❤️ Remove Favourite' : '🤍 Add to Favourites'}
                             </button>
@@ -204,12 +204,12 @@ const MovieDetails = () => {
                                     <button
                                         type="button"
                                         onClick={() => setShowWatchlistMenu(!showWatchlistMenu)}
-                                        className="flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white px-7 py-3 rounded-full font-semibold hover:bg-white/20 transition-all"
+                                        className="flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white px-7 py-3 rounded-full font-semibold hover:bg-white/20 transition-all whitespace-nowrap"
                                     >
                                         ☰ Add to Watchlist
                                     </button>
                                     {showWatchlistMenu && (
-                                        <div className="absolute top-12 left-0 bg-gray-900 border border-white/10 rounded-xl shadow-2xl z-10 w-52 overflow-hidden">
+                                        <div className="absolute top-16 left-0 bg-gray-900 border border-white/10 rounded-xl shadow-2xl z-10 w-52 overflow-hidden">
                                             {watchlists.length === 0 ? (
                                                 <p className="text-gray-400 text-sm p-4">No watchlists yet!</p>
                                             ) : (
@@ -218,7 +218,7 @@ const MovieDetails = () => {
                                                         type="button"
                                                         key={w.id}
                                                         onClick={() => handleAddToWatchlist(w)}
-                                                        className="block w-full text-left px-4 py-3 text-white hover:bg-white/10 text-sm transition-colors"
+                                                        className="block w-full text-left px-4 py-3 text-white hover:bg-orange-500 text-lg transition-colors border-b border-white/5 last:border-0"
                                                     >
                                                         {w.name}
                                                     </button>
@@ -232,7 +232,7 @@ const MovieDetails = () => {
                             <button
                                 type="button"
                                 onClick={handleShare}
-                                className="flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white px-5 py-3 rounded-full hover:bg-white/20 transition-all"
+                                className="flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white px-5 py-3 rounded-full hover:bg-white/20 transition-all whitespace-nowrap"
                             >
                                 🔗 Share
                             </button>
@@ -265,6 +265,13 @@ const MovieDetails = () => {
                             </div>
                         ))}
                     </div>
+                </div>
+            )}
+            {/* Copy toast */}
+            {copied && (
+                <div className="fixed top-24 right-8 z-50 bg-gray-800 border border-orange-500 rounded-xl px-5 py-3 shadow-2xl flex items-center gap-3">
+                    <span className="text-orange-500">🔗</span>
+                    <p className="text-white text-sm font-medium">Link copied to clipboard!</p>
                 </div>
             )}
         </div>

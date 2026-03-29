@@ -94,7 +94,7 @@ const Home = () => {
                                 onClick={() => navigate(`/movies/${hero.id}`)}
                                 className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-3 rounded-full font-semibold hover:bg-white/20 transition-all"
                             >
-                                ℹ️ More Info
+                                ℹ️ Details
                             </button>
                         </div>
                     </div>

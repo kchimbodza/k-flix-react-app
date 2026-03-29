@@ -385,6 +385,208 @@
       "video": false,
       "vote_average": 7.1,
       "vote_count": 657
+    },
+    {
+      "userId": "2I1pxhMALW0",
+      "movieId": 687163,
+      "adult": false,
+      "backdrop_path": "/8Tfys3mDZVp4tNoH2ktm06a0Tau.jpg",
+      "belongs_to_collection": null,
+      "budget": 200000000,
+      "genres": [
+        {
+          "id": 878,
+          "name": "Science Fiction"
+        },
+        {
+          "id": 12,
+          "name": "Adventure"
+        }
+      ],
+      "homepage": "https://www.amazon.com/salp/projecthailmary?hhf",
+      "id": "fma0MvEeCow",
+      "imdb_id": "tt12042730",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "Project Hail Mary",
+      "overview": "Science teacher Ryland Grace wakes up on a spaceship light years from home with no recollection of who he is or how he got there. As his memory returns, he begins to uncover his mission: solve the riddle of the mysterious substance causing the sun to die out. He must call on his scientific knowledge and unorthodox ideas to save everything on Earth from extinction… but an unexpected friendship means he may not have to do it alone.",
+      "popularity": 298.5383,
+      "poster_path": "/yihdXomYb5kTeSivtFndMy5iDmf.jpg",
+      "production_companies": [
+        {
+          "id": 77973,
+          "logo_path": "/eUZ0kfE4uyO0JYIrjgUSOqWPqjK.png",
+          "name": "Lord Miller",
+          "origin_country": "US"
+        },
+        {
+          "id": 210099,
+          "logo_path": "/g5oRCNCi8kNVb8gEoSoIcqkhjmR.png",
+          "name": "Amazon MGM Studios",
+          "origin_country": "US"
+        },
+        {
+          "id": 84041,
+          "logo_path": "/nw4kyc29QRpNtFbdsBHkRSFavvt.png",
+          "name": "Pascal Pictures",
+          "origin_country": "US"
+        },
+        {
+          "id": 232193,
+          "logo_path": null,
+          "name": "Open Invite Entertainment",
+          "origin_country": "US"
+        },
+        {
+          "id": 22842,
+          "logo_path": "/buyfiDYTfPVTHxvYZ4yHu69zFPs.png",
+          "name": "Waypoint Entertainment",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2026-03-15",
+      "revenue": 223200000,
+      "runtime": 157,
+      "spoken_languages": [
+        {
+          "english_name": "Mandarin",
+          "iso_639_1": "zh",
+          "name": "普通话"
+        },
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        },
+        {
+          "english_name": "Russian",
+          "iso_639_1": "ru",
+          "name": "Pусский"
+        }
+      ],
+      "status": "Released",
+      "tagline": "Believe in the Hail Mary.",
+      "title": "Project Hail Mary",
+      "video": false,
+      "vote_average": 8.163,
+      "vote_count": 627
+    },
+    {
+      "userId": "2I1pxhMALW0",
+      "movieId": 13579,
+      "adult": false,
+      "backdrop_path": "/1xWY8gN8fTpiunMIKjCJAGOR4zJ.jpg",
+      "belongs_to_collection": null,
+      "budget": 23000000,
+      "genres": [
+        {
+          "id": 18,
+          "name": "Drama"
+        },
+        {
+          "id": 10751,
+          "name": "Family"
+        },
+        {
+          "id": 35,
+          "name": "Comedy"
+        }
+      ],
+      "homepage": "",
+      "id": "4U4P4k-Fulw",
+      "imdb_id": "tt1091751",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_title": "The Longshots",
+      "overview": "The true story of Jasmine Plummer who, at the age of eleven, became the first female to play in Pop Warner football tournament in its 56-year history.",
+      "popularity": 1.8222,
+      "poster_path": "/mrejNUR8giaAYIJkaLztELRrVXe.jpg",
+      "production_companies": [
+        {
+          "id": 2780,
+          "logo_path": "/hgdyY2exOpOXG3EkQR8WsUAUNBZ.png",
+          "name": "Cube Vision",
+          "origin_country": "US"
+        },
+        {
+          "id": 7405,
+          "logo_path": "/rfnws0uY8rsNAsrLbx3gEIcYXx3.png",
+          "name": "Dimension Films",
+          "origin_country": "US"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "US",
+          "name": "United States of America"
+        }
+      ],
+      "release_date": "2008-08-22",
+      "revenue": 11767866,
+      "runtime": 94,
+      "spoken_languages": [
+        {
+          "english_name": "English",
+          "iso_639_1": "en",
+          "name": "English"
+        }
+      ],
+      "status": "Released",
+      "tagline": "The new coach has a secret weapon.",
+      "title": "The Longshots",
+      "video": false,
+      "vote_average": 6.4,
+      "vote_count": 74
+    },
+    {
+      "userId": "2I1pxhMALW0",
+      "movieId": 316004,
+      "adult": false,
+      "backdrop_path": "/sfGtX5zvQAqiGyyU5KGBzDM6Ix3.jpg",
+      "genre_ids": [
+        878
+      ],
+      "id": "fvj3SqGSdpw",
+      "original_language": "en",
+      "original_title": "Air",
+      "overview": "A scuba diver surfaces to a world with no breathable air, and must fight to get back to her family, and her son, before her tanks run out.",
+      "popularity": 0.3182,
+      "poster_path": "/v0rO8OUO9bF9tRnyTEqPOIUcQ7k.jpg",
+      "release_date": "2014-06-05",
+      "title": "Air",
+      "video": false,
+      "vote_average": 1.8,
+      "vote_count": 2
+    },
+    {
+      "userId": "2I1pxhMALW0",
+      "movieId": 565911,
+      "adult": false,
+      "backdrop_path": "/gHqi3bDJtXF1gEneXh5xriNleGH.jpg",
+      "genre_ids": [
+        10402
+      ],
+      "id": "KTWpUWwS2qs",
+      "original_language": "it",
+      "original_title": "Attila",
+      "overview": "First staged at the Teatro La Fenice in 1846, Verdi’s ninth opera, Attila, returns to the stage of La Scala on December 7th. Following the inauguration of the 2015-2016 Season with Giovanna d’Arco and in anticipation of Macbeth, with Attila Musical Director Riccardo Chailly continues his study of Verdi’s early works, renewing a successful collaboration with creative director Davide Livermore that began with his acclaimed production of Donizetti’s Don Pasquale for La Scala. In this complex opera Verdi experiments with fresh perspectives, featuring spectacular historical settings, introspective angles and moral uncertainties. Attila demands of its performers not only passion and confidence, but also the ability to find subtle accents and psychological nuances.",
+      "popularity": 50.9976,
+      "poster_path": "/oRoULQnyJldHFdM8aoVhC2AAec7.jpg",
+      "release_date": "2018-12-07",
+      "title": "Attila",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
     }
   ],
   "watchlists": [
@@ -488,6 +690,555 @@
           "video": false,
           "vote_average": 7.062,
           "vote_count": 652
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/tq3h43fZy0H80vzf47MAY7R9Mxo.jpg",
+          "belongs_to_collection": null,
+          "budget": 90000000,
+          "genres": [
+            {
+              "id": 16,
+              "name": "Animation"
+            },
+            {
+              "id": 35,
+              "name": "Comedy"
+            },
+            {
+              "id": 10751,
+              "name": "Family"
+            }
+          ],
+          "homepage": "https://goat.movie",
+          "id": 1297842,
+          "imdb_id": "tt27613895",
+          "origin_country": [
+            "US"
+          ],
+          "original_language": "en",
+          "original_title": "GOAT",
+          "overview": "A small goat with big dreams gets a once-in-a-lifetime shot to join the pros and play roarball, a high-intensity, co-ed, full-contact sport dominated by the fastest, fiercest animals in the world.",
+          "popularity": 267.6634,
+          "poster_path": "/wfuqMlaExcoYiUEvKfVpUTt1v4u.jpg",
+          "production_companies": [
+            {
+              "id": 2251,
+              "logo_path": "/5ilV5mH3gxTEU7p5wjxptHvXkyr.png",
+              "name": "Sony Pictures Animation",
+              "origin_country": "US"
+            },
+            {
+              "id": 120524,
+              "logo_path": "/6G31NBE33avSwnSw9OGiFhCOpkS.png",
+              "name": "Unanimous Media",
+              "origin_country": "US"
+            },
+            {
+              "id": 184287,
+              "logo_path": "/yH5Zbs5SaOiXCazdQwrt00vK9Pj.png",
+              "name": "Modern Magic",
+              "origin_country": "US"
+            },
+            {
+              "id": 5,
+              "logo_path": "/71BqEFAF4V3qjjMPCpLuyJFB9A.png",
+              "name": "Columbia Pictures",
+              "origin_country": "US"
+            },
+            {
+              "id": 79426,
+              "logo_path": "/8aEC7xem9YwHNCDojSFEPQgoFC3.png",
+              "name": "MACRO",
+              "origin_country": "US"
+            },
+            {
+              "id": 22213,
+              "logo_path": "/qx9K6bFWJupwde0xQDwOvXkOaL8.png",
+              "name": "TSG Entertainment",
+              "origin_country": "US"
+            }
+          ],
+          "production_countries": [
+            {
+              "iso_3166_1": "US",
+              "name": "United States of America"
+            }
+          ],
+          "release_date": "2026-02-11",
+          "revenue": 174435737,
+          "runtime": 100,
+          "spoken_languages": [
+            {
+              "english_name": "English",
+              "iso_639_1": "en",
+              "name": "English"
+            }
+          ],
+          "status": "Released",
+          "tagline": "You're never too small to dream big.",
+          "title": "GOAT",
+          "video": false,
+          "vote_average": 7.721,
+          "vote_count": 188
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/aWtkX6vtv774wxEw2cAUdv93feC.jpg",
+          "belongs_to_collection": null,
+          "budget": 10,
+          "genres": [
+            {
+              "id": 27,
+              "name": "Horror"
+            },
+            {
+              "id": 28,
+              "name": "Action"
+            },
+            {
+              "id": 53,
+              "name": "Thriller"
+            }
+          ],
+          "homepage": "",
+          "id": 1311556,
+          "imdb_id": null,
+          "origin_country": [
+            "MX"
+          ],
+          "original_language": "en",
+          "original_title": "The Blacky",
+          "overview": "",
+          "popularity": 0.1749,
+          "poster_path": "/y1hKrS5Tpl6ClWvzdeeKPcWJton.jpg",
+          "production_companies": [
+            {
+              "id": 232763,
+              "logo_path": null,
+              "name": "mrdacmatevisualentertainment",
+              "origin_country": ""
+            }
+          ],
+          "production_countries": [
+            {
+              "iso_3166_1": "MX",
+              "name": "Mexico"
+            }
+          ],
+          "release_date": "2022-12-31",
+          "revenue": 20,
+          "runtime": 0,
+          "spoken_languages": [
+            {
+              "english_name": "Spanish",
+              "iso_639_1": "es",
+              "name": "Español"
+            }
+          ],
+          "status": "Released",
+          "tagline": "",
+          "title": "The Blacky",
+          "video": false,
+          "vote_average": 0,
+          "vote_count": 0
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/6GuqUJ33BnWDAoVPZP55gDr5G55.jpg",
+          "belongs_to_collection": null,
+          "budget": 0,
+          "genres": [
+            {
+              "id": 28,
+              "name": "Action"
+            },
+            {
+              "id": 53,
+              "name": "Thriller"
+            },
+            {
+              "id": 27,
+              "name": "Horror"
+            }
+          ],
+          "homepage": "https://www.amazon.com/dp/B0GPFBRJBQ",
+          "id": 1084187,
+          "imdb_id": "tt26678938",
+          "origin_country": [
+            "US"
+          ],
+          "original_language": "en",
+          "original_title": "Pretty Lethal",
+          "overview": "A troupe of ballerinas find themselves fighting for survival as they attempt to escape from a remote inn after their bus breaks down on the way to a dance competition.",
+          "popularity": 308.4196,
+          "poster_path": "/znTPnXCK3lEQJgqXCvP7e5FUz6f.jpg",
+          "production_companies": [
+            {
+              "id": 121470,
+              "logo_path": "/zvJFu1C6gB80A98n6IGXBvMtgVl.png",
+              "name": "87North Productions",
+              "origin_country": "US"
+            },
+            {
+              "id": 20788,
+              "logo_path": "/7hBlD2RPUo6LHgSDSSnyYuXdigU.png",
+              "name": "GulfStream Pictures",
+              "origin_country": "US"
+            },
+            {
+              "id": 74933,
+              "logo_path": null,
+              "name": "Pioneer Stillking",
+              "origin_country": "HU"
+            },
+            {
+              "id": 210099,
+              "logo_path": "/g5oRCNCi8kNVb8gEoSoIcqkhjmR.png",
+              "name": "Amazon MGM Studios",
+              "origin_country": "US"
+            }
+          ],
+          "production_countries": [
+            {
+              "iso_3166_1": "US",
+              "name": "United States of America"
+            },
+            {
+              "iso_3166_1": "HU",
+              "name": "Hungary"
+            }
+          ],
+          "release_date": "2026-03-13",
+          "revenue": 0,
+          "runtime": 88,
+          "spoken_languages": [
+            {
+              "english_name": "English",
+              "iso_639_1": "en",
+              "name": "English"
+            },
+            {
+              "english_name": "Hungarian",
+              "iso_639_1": "hu",
+              "name": "Magyar"
+            }
+          ],
+          "status": "Released",
+          "tagline": "Blood, sweat and tutus.",
+          "title": "Pretty Lethal",
+          "video": false,
+          "vote_average": 6.784,
+          "vote_count": 97
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/hz7TdCrpLLt2Dz7S3PS2HG9rpAO.jpg",
+          "belongs_to_collection": {
+            "id": 2602,
+            "name": "Scream Collection",
+            "poster_path": "/p3EjClFy20jjT0u06dzBs4lvvhi.jpg",
+            "backdrop_path": "/fG6GzZAwtsW3v2mhB4EyQLMRjUV.jpg"
+          },
+          "budget": 45000000,
+          "genres": [
+            {
+              "id": 27,
+              "name": "Horror"
+            },
+            {
+              "id": 9648,
+              "name": "Mystery"
+            },
+            {
+              "id": 80,
+              "name": "Crime"
+            }
+          ],
+          "homepage": "http://www.screammovie.com",
+          "id": 1159559,
+          "imdb_id": "tt27047903",
+          "origin_country": [
+            "US"
+          ],
+          "original_language": "en",
+          "original_title": "Scream 7",
+          "overview": "When a new Ghostface killer emerges in the quiet town where Sidney Prescott has built a new life, her darkest fears are realized as her daughter becomes the next target. Determined to protect her family, Sidney must face the horrors of her past to put an end to the bloodshed once and for all.",
+          "popularity": 262.941,
+          "poster_path": "/jjyuk0edLiW8vOSnlfwWCCLpbh5.jpg",
+          "production_companies": [
+            {
+              "id": 4,
+              "logo_path": "/jay6WcMgagAklUt7i9Euwj1pzTF.png",
+              "name": "Paramount Pictures",
+              "origin_country": "US"
+            },
+            {
+              "id": 143790,
+              "logo_path": "/wo1smiXdiwwxai2dwJlRiGwE7rS.png",
+              "name": "Spyglass Media Group",
+              "origin_country": "US"
+            },
+            {
+              "id": 130448,
+              "logo_path": "/yHWTTGKbOGZKUd1cp6l3uLyDeiv.png",
+              "name": "Project X Entertainment",
+              "origin_country": "US"
+            }
+          ],
+          "production_countries": [
+            {
+              "iso_3166_1": "US",
+              "name": "United States of America"
+            }
+          ],
+          "release_date": "2026-02-25",
+          "revenue": 194699963,
+          "runtime": 114,
+          "spoken_languages": [
+            {
+              "english_name": "English",
+              "iso_639_1": "en",
+              "name": "English"
+            }
+          ],
+          "status": "Released",
+          "tagline": "Burn it all down.",
+          "title": "Scream 7",
+          "video": false,
+          "vote_average": 5.795,
+          "vote_count": 481
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/9Z2uDYXqJrlmePznQQJhL6d92Rq.jpg",
+          "belongs_to_collection": {
+            "id": 1434561,
+            "name": "The Super Mario Collection",
+            "poster_path": "/8wVpJ4DCEVP6Ima1MgKgymZbYcz.jpg",
+            "backdrop_path": "/hX6DycbhqpkHuYD5ia4YeQQ2RgV.jpg"
+          },
+          "budget": 0,
+          "genres": [
+            {
+              "id": 10751,
+              "name": "Family"
+            },
+            {
+              "id": 14,
+              "name": "Fantasy"
+            },
+            {
+              "id": 35,
+              "name": "Comedy"
+            },
+            {
+              "id": 12,
+              "name": "Adventure"
+            },
+            {
+              "id": 16,
+              "name": "Animation"
+            }
+          ],
+          "homepage": "https://www.thesupermariogalaxymovie.com",
+          "id": 1226863,
+          "imdb_id": "tt28650488",
+          "origin_country": [
+            "US"
+          ],
+          "original_language": "en",
+          "original_title": "The Super Mario Galaxy Movie",
+          "overview": "Having thwarted Bowser's previous plot to marry Princess Peach, Mario and Luigi now face a fresh threat in Bowser Jr., who is determined to liberate his father from captivity and restore the family legacy. Alongside companions new and old, the brothers travel across the stars to stop the young heir's crusade.",
+          "popularity": 57.7658,
+          "poster_path": "/eJGWx219ZcEMVQJhAgMiqo8tYY.jpg",
+          "production_companies": [
+            {
+              "id": 6704,
+              "logo_path": "/fOG2oY4m1YuYTQh4bMqqZkmgOAI.png",
+              "name": "Illumination",
+              "origin_country": "US"
+            },
+            {
+              "id": 33,
+              "logo_path": "/8lvHyhjr8oUKOOy2dKXoALWKdp0.png",
+              "name": "Universal Pictures",
+              "origin_country": "US"
+            },
+            {
+              "id": 12288,
+              "logo_path": "/e4dQAqZD374H5EuM0W1ljEBWTKy.png",
+              "name": "Nintendo",
+              "origin_country": "JP"
+            }
+          ],
+          "production_countries": [
+            {
+              "iso_3166_1": "JP",
+              "name": "Japan"
+            },
+            {
+              "iso_3166_1": "US",
+              "name": "United States of America"
+            }
+          ],
+          "release_date": "2026-04-01",
+          "revenue": 0,
+          "runtime": 98,
+          "spoken_languages": [
+            {
+              "english_name": "English",
+              "iso_639_1": "en",
+              "name": "English"
+            }
+          ],
+          "status": "Released",
+          "tagline": "The galaxy awaits.",
+          "title": "The Super Mario Galaxy Movie",
+          "video": false,
+          "vote_average": 8,
+          "vote_count": 4
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/u53UYu5XG2hNgWGvs3xGhAVzypl.jpg",
+          "belongs_to_collection": null,
+          "budget": 150000000,
+          "genres": [
+            {
+              "id": 16,
+              "name": "Animation"
+            },
+            {
+              "id": 10751,
+              "name": "Family"
+            },
+            {
+              "id": 878,
+              "name": "Science Fiction"
+            },
+            {
+              "id": 35,
+              "name": "Comedy"
+            },
+            {
+              "id": 12,
+              "name": "Adventure"
+            }
+          ],
+          "homepage": "https://www.pixar.com/hoppers",
+          "id": 1327819,
+          "imdb_id": "tt26443616",
+          "origin_country": [
+            "US"
+          ],
+          "original_language": "en",
+          "original_title": "Hoppers",
+          "overview": "Scientists have discovered how to 'hop' human consciousness into lifelike robotic animals, allowing people to communicate with animals as animals. Animal lover Mabel seizes an opportunity to use the technology, uncovering mysteries within the animal world beyond anything she could have imagined.",
+          "popularity": 121.7418,
+          "poster_path": "/xjtWQ2CL1mpmMNwuU5HeS4Iuwuu.jpg",
+          "production_companies": [
+            {
+              "id": 3,
+              "logo_path": "/1TjvGVDMYsj6JBxOAkUHpPEwLf7.png",
+              "name": "Pixar",
+              "origin_country": "US"
+            }
+          ],
+          "production_countries": [
+            {
+              "iso_3166_1": "US",
+              "name": "United States of America"
+            }
+          ],
+          "release_date": "2026-03-04",
+          "revenue": 248558236,
+          "runtime": 105,
+          "spoken_languages": [
+            {
+              "english_name": "English",
+              "iso_639_1": "en",
+              "name": "English"
+            },
+            {
+              "english_name": "Spanish",
+              "iso_639_1": "es",
+              "name": "Español"
+            }
+          ],
+          "status": "Released",
+          "tagline": "Act natural.",
+          "title": "Hoppers",
+          "video": false,
+          "vote_average": 7.563,
+          "vote_count": 327
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/1xWY8gN8fTpiunMIKjCJAGOR4zJ.jpg",
+          "belongs_to_collection": null,
+          "budget": 23000000,
+          "genres": [
+            {
+              "id": 18,
+              "name": "Drama"
+            },
+            {
+              "id": 10751,
+              "name": "Family"
+            },
+            {
+              "id": 35,
+              "name": "Comedy"
+            }
+          ],
+          "homepage": "",
+          "id": 13579,
+          "imdb_id": "tt1091751",
+          "origin_country": [
+            "US"
+          ],
+          "original_language": "en",
+          "original_title": "The Longshots",
+          "overview": "The true story of Jasmine Plummer who, at the age of eleven, became the first female to play in Pop Warner football tournament in its 56-year history.",
+          "popularity": 1.8222,
+          "poster_path": "/mrejNUR8giaAYIJkaLztELRrVXe.jpg",
+          "production_companies": [
+            {
+              "id": 2780,
+              "logo_path": "/hgdyY2exOpOXG3EkQR8WsUAUNBZ.png",
+              "name": "Cube Vision",
+              "origin_country": "US"
+            },
+            {
+              "id": 7405,
+              "logo_path": "/rfnws0uY8rsNAsrLbx3gEIcYXx3.png",
+              "name": "Dimension Films",
+              "origin_country": "US"
+            }
+          ],
+          "production_countries": [
+            {
+              "iso_3166_1": "US",
+              "name": "United States of America"
+            }
+          ],
+          "release_date": "2008-08-22",
+          "revenue": 11767866,
+          "runtime": 94,
+          "spoken_languages": [
+            {
+              "english_name": "English",
+              "iso_639_1": "en",
+              "name": "English"
+            }
+          ],
+          "status": "Released",
+          "tagline": "The new coach has a secret weapon.",
+          "title": "The Longshots",
+          "video": false,
+          "vote_average": 6.4,
+          "vote_count": 74
         }
       ],
       "id": "NbdnrUorVas"
@@ -733,6 +1484,18 @@
         }
       ],
       "id": "i6XjOljChCQ"
+    },
+    {
+      "userId": "2I1pxhMALW0",
+      "name": "Fyah",
+      "movies": [],
+      "id": "K9dIUDdHSJ8"
+    },
+    {
+      "userId": "2I1pxhMALW0",
+      "name": "ron",
+      "movies": [],
+      "id": "PFNXYlyOzZU"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -2,18 +2,16 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getUserWatchlists, updateWatchlist } from '../services/api'
 import { useAuth } from '../context/AuthContext'
-import { useFavourites } from '../context/FavouritesContext'
+import MovieCard from '../components/MovieCard'
 
 const WatchlistDetail = () => {
     const { id } = useParams()
     const { user } = useAuth()
-    const { isFavourite } = useFavourites()
     const navigate = useNavigate()
     const [watchlist, setWatchlist] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-    // noinspection JSUnresolvedVariable
-    const IMAGE_URL = import.meta.env.VITE_TMDB_IMAGE_URL
+    const [copied, setCopied] = useState(false)
 
     useEffect(() => {
         const fetchWatchlist = async () => {
@@ -50,77 +48,89 @@ const WatchlistDetail = () => {
             })
         } else {
             await navigator.clipboard.writeText(window.location.href)
-            alert('Link copied to clipboard!')
+            setCopied(true)
+            setTimeout(() => setCopied(false), 3000)
         }
     }
 
-    if (loading) return <div className="text-white text-center mt-10">Loading...</div>
-    if (error) return <div className="text-red-500 text-center mt-10">{error}</div>
+    if (loading) return (
+        <div className="min-h-screen bg-black flex items-center justify-center">
+            <p className="text-white text-xl">Loading...</p>
+        </div>
+    )
+    if (error) return (
+        <div className="min-h-screen bg-black flex items-center justify-center">
+            <p className="text-orange-400 text-xl">{error}</p>
+        </div>
+    )
 
     return (
-        <div className="p-6 max-w-5xl mx-auto">
-            {/* Header */}
-            <div className="flex items-center justify-between mb-6">
-                <button
-                    type="button"
-                    onClick={() => navigate('/watchlists')}
-                    className="text-gray-400 hover:text-white text-sm"
-                >
-                    ← Back to Watchlists
-                </button>
-                <button
-                    type="button"
-                    onClick={handleShare}
-                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm"
-                >
-                    🔗 Share Watchlist
-                </button>
-            </div>
-
-            <h1 className="text-3xl font-bold text-white mb-2">{watchlist.name}</h1>
-            <p className="text-gray-400 mb-6">
-                {watchlist.movies?.length || 0} {watchlist.movies?.length === 1 ? 'movie' : 'movies'}
-            </p>
-
-            {watchlist.movies?.length === 0 ? (
-                <div className="text-center py-10">
-                    <p className="text-gray-400 mb-4">No movies in this watchlist yet.</p>
+        <div className="min-h-screen bg-gray-950 py-12 pt-48">
+            {/* Header — centered */}
+            <div className="max-w-5xl mx-auto px-6 mb-10">
+                <div className="flex items-center justify-between mb-8">
                     <button
                         type="button"
-                        onClick={() => navigate('/')}
-                        className="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700"
+                        onClick={() => navigate('/watchlists')}
+                        className="text-gray-400 hover:text-orange-400 transition-colors text-sm"
                     >
-                        Browse Movies
+                        ← Back to Watchlists
+                    </button>
+                    <button
+                        type="button"
+                        onClick={handleShare}
+                        className="bg-white/10 border border-white/10 text-white px-5 py-2 rounded-xl hover:bg-orange-500/20 hover:border-orange-500/30 text-sm font-semibold transition-colors"
+                    >
+                        🔗 Share Watchlist
                     </button>
                 </div>
-            ) : (
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                    {watchlist.movies?.map(movie => (
-                        <div key={movie.id} className="bg-gray-800 rounded-lg overflow-hidden">
-                            <div className="relative">
-                                <img
-                                    src={`${IMAGE_URL}${movie.poster_path}`}
-                                    alt={movie.title}
-                                    className="w-full h-48 object-cover cursor-pointer hover:opacity-80"
-                                    onClick={() => navigate(`/movies/${movie.id}`)}
-                                />
-                                {isFavourite(movie.id) && (
-                                    <span className="absolute top-2 right-2 text-lg">❤️</span>
-                                )}
-                            </div>
-                            <div className="p-2">
-                                <p className="text-white text-xs truncate mb-1">{movie.title}</p>
-                                <p className="text-yellow-400 text-xs mb-2">⭐ {movie.vote_average?.toFixed(1)}</p>
+
+                <h1 className="text-4xl font-bold text-white mb-2">{watchlist.name}</h1>
+                <p className="text-gray-400">
+                    {watchlist.movies?.length || 0} {watchlist.movies?.length === 1 ? 'movie' : 'movies'}
+                </p>
+            </div>
+
+            {/* Movies grid — full width */}
+            <div className="px-16">
+                {watchlist.movies?.length === 0 ? (
+                    <div className="text-center py-20">
+                        <p className="text-gray-500 text-lg mb-6">No movies in this watchlist yet.</p>
+                        <button
+                            type="button"
+                            onClick={() => navigate('/')}
+                            className="bg-orange-500 text-white px-8 py-3 rounded-xl hover:bg-orange-600 font-semibold transition-colors"
+                        >
+                            Browse Movies
+                        </button>
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-10">
+                        {watchlist.movies?.map(movie => (
+                            <div key={movie.id}>
+                                <MovieCard movie={movie} showHeartOnHover={true} />
                                 <button
                                     type="button"
-                                    onClick={() => handleRemoveMovie(movie.id)}
-                                    className="w-full bg-red-600 text-white text-xs py-1 rounded hover:bg-red-700"
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        e.stopPropagation()
+                                        void handleRemoveMovie(movie.id)
+                                    }}
+                                    className="mt-4 w-full bg-white/10 text-white text-lg py-1.5 rounded-lg hover:bg-orange-500/20 hover:text-orange-400 transition-colors"
                                 >
                                     Remove
                                 </button>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
+                )}
+            </div>
+
+            {/* Toast notification */}
+            {copied && (
+                <div className="fixed top-24 right-8 z-50 bg-gray-900 border border-orange-500/30 rounded-xl px-5 py-3 shadow-2xl flex items-center gap-3">
+                    <span className="text-orange-500">🔗</span>
+                    <p className="text-white text-sm font-medium">Link copied to clipboard!</p>
                 </div>
             )}
         </div>

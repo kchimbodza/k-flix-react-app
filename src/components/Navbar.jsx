@@ -53,6 +53,7 @@ const Navbar = () => {
                     </Link>
                     {user ? (
                         <div className="flex items-center gap-4">
+                            <span className="text-orange-500 text-lg font-bold">Welcome!, <span className="text-white font-semibold">{user.name}</span></span>
                             <Link to="/profile" title="Profile" className="w-11 h-11 rounded-full bg-orange-500 flex items-center justify-center text-white font-bold text-lg hover:bg-orange-600 transition-colors">
                                 {user.name?.charAt(0).toUpperCase()}
                             </Link>

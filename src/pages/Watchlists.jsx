@@ -49,92 +49,106 @@ const Watchlists = () => {
         }
     }
 
-    if (loading) return <div className="text-white text-center mt-10">Loading...</div>
+    if (loading) return (
+        <div className="min-h-screen bg-black flex items-center justify-center">
+            <p className="text-white text-xl">Loading...</p>
+        </div>
+    )
 
     return (
-        <div className="p-6 max-w-4xl mx-auto">
-            <h1 className="text-3xl font-bold text-white mb-6">My Watchlists</h1>
+        <div className="min-h-screen bg-gray-950 py-12 pt-48">
+            {/* Header and create form — centered */}
+            <div className="max-w-4xl mx-auto px-6">
+                <h1 className="text-4xl font-bold text-white mb-2 text-center">My Watchlists</h1>
+                <p className="text-gray-400 mb-10 text-center">Organise your movies into custom lists</p>
 
-            {/* Create new watchlist */}
-            <div className="bg-gray-800 rounded-lg p-4 mb-8">
-                <h2 className="text-white font-semibold mb-3">Create New Watchlist</h2>
-                <div className="flex gap-2">
-                    <input
-                        type="text"
-                        value={newName}
-                        onChange={(e) => setNewName(e.target.value)}
-                        onKeyDown={(e) => e.key === 'Enter' && void handleCreate()}
-                        placeholder="Watchlist name..."
-                        className="flex-1 p-2 rounded bg-gray-700 text-white"
-                    />
-                    <button
-                        type="button"
-                        onClick={handleCreate}
-                        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
-                    >
-                        Create
-                    </button>
+                {/* Create new watchlist */}
+                <div className="bg-white/5 border border-white/10 backdrop-blur rounded-2xl p-6 mb-10">
+                    <h2 className="text-white font-semibold text-lg mb-4">Create New Watchlist</h2>
+                    <div className="flex gap-3">
+                        <input
+                            type="text"
+                            value={newName}
+                            onChange={(e) => setNewName(e.target.value)}
+                            onKeyDown={(e) => e.key === 'Enter' && void handleCreate()}
+                            placeholder="e.g. Friday Night Movies..."
+                            className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-white/30"
+                        />
+                        <button
+                            type="button"
+                            onClick={handleCreate}
+                            className="bg-orange-500 text-white px-6 py-3 rounded-xl hover:bg-orange-600 font-semibold transition-colors"
+                        >
+                            Create
+                        </button>
+                    </div>
                 </div>
+
+                {error && <p className="text-red-400 mb-6">{error}</p>}
             </div>
 
-            {error && <p className="text-red-500 mb-4">{error}</p>}
-
-            {/* Watchlist grid */}
-            {watchlists.length === 0 ? (
-                <p className="text-gray-400">No watchlists yet — create one above!</p>
-            ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {watchlists.map(watchlist => (
-                        <div key={watchlist.id} className="bg-gray-800 rounded-lg p-4">
-                            <div className="flex justify-between items-start mb-3">
-                                <div>
-                                    <h2 className="text-white font-semibold text-lg">{watchlist.name}</h2>
-                                    <p className="text-gray-400 text-sm">
-                                        {watchlist.movies?.length || 0} {watchlist.movies?.length === 1 ? 'movie' : 'movies'}
-                                    </p>
+            {/* Watchlist grid — full width */}
+            <div className="px-16">
+                {watchlists.length === 0 ? (
+                    <p className="text-gray-500 text-lg text-center">No watchlists yet — create one above!</p>
+                ) : (
+                    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10">
+                        {watchlists.map(watchlist => (
+                            <div key={watchlist.id} className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-white/20 transition-colors">
+                                <div className="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h2 className="text-white font-bold text-xl">{watchlist.name}</h2>
+                                        <p className="text-gray-400 text-sm mt-1">
+                                            {watchlist.movies?.length || 0} {watchlist.movies?.length === 1 ? 'movie' : 'movies'}
+                                        </p>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={() => handleDelete(watchlist.id)}
+                                        className="text-gray-500 hover:text-orange-400 transition-colors text-sm"
+                                    >
+                                        🗑 Delete
+                                    </button>
                                 </div>
-                                <button
-                                    type="button"
-                                    onClick={() => handleDelete(watchlist.id)}
-                                    className="text-red-500 hover:text-red-400 text-sm"
+
+                                {/* Movie poster previews */}
+                                {watchlist.movies?.length > 0 ? (
+                                    <div className="flex gap-2 mb-4">
+                                        {watchlist.movies.slice(0, 3).map(movie => (
+                                            <div key={movie.id} className="relative">
+                                                <img
+                                                    src={`${IMAGE_URL}${movie.poster_path}`}
+                                                    alt={movie.title}
+                                                    className="w-20 h-28 object-cover rounded-lg border border-white/10"
+                                                />
+                                                {isFavourite(movie.id) && (
+                                                    <span className="absolute top-1 right-1 text-xs">❤️</span>
+                                                )}
+                                            </div>
+                                        ))}
+                                        {watchlist.movies.length > 3 && (
+                                            <div className="w-20 h-28 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-400 text-sm font-semibold">
+                                                +{watchlist.movies.length - 3}
+                                            </div>
+                                        )}
+                                    </div>
+                                ) : (
+                                    <div className="h-28 flex items-center justify-center text-gray-600 text-sm mb-4 border border-dashed border-white/10 rounded-lg">
+                                        No movies yet
+                                    </div>
+                                )}
+
+                                <Link
+                                    to={`/watchlists/${watchlist.id}`}
+                                    className="block w-full text-center bg-white/10 hover:bg-orange-500/20 text-white py-2.5 rounded-xl text-sm font-semibold transition-colors"
                                 >
-                                    🗑 Delete
-                                </button>
+                                    View Watchlist →
+                                </Link>
                             </div>
-
-                            {/* Movie poster previews with favourite indicator */}
-                            {watchlist.movies?.length > 0 && (
-                                <div className="flex gap-1 mb-3">
-                                    {watchlist.movies.slice(0, 3).map(movie => (
-                                        <div key={movie.id} className="relative">
-                                            <img
-                                                src={`${IMAGE_URL}${movie.poster_path}`}
-                                                alt={movie.title}
-                                                className="w-16 h-24 object-cover rounded"
-                                            />
-                                            {isFavourite(movie.id) && (
-                                                <span className="absolute top-1 right-1 text-xs">❤️</span>
-                                            )}
-                                        </div>
-                                    ))}
-                                    {watchlist.movies.length > 3 && (
-                                        <div className="w-16 h-24 bg-gray-700 rounded flex items-center justify-center text-gray-400 text-sm">
-                                            +{watchlist.movies.length - 3}
-                                        </div>
-                                    )}
-                                </div>
-                            )}
-
-                            <Link
-                                to={`/watchlists/${watchlist.id}`}
-                                className="block w-full text-center bg-gray-700 text-white py-2 rounded hover:bg-gray-600 text-sm"
-                            >
-                                View Watchlist →
-                            </Link>
-                        </div>
-                    ))}
-                </div>
-            )}
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
     )
 }

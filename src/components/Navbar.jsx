@@ -75,11 +75,11 @@ const Navbar = () => {
                 </div>
 
                 {/* Faded orange bottom border — only shows when scrolled */}
-                {scrolled && (
-                    <div className="absolute bottom-0 left-0 right-0 h-px"
+                {/*{scrolled && (*/}
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5"
                          style={{ background: 'linear-gradient(to right, transparent, #f97316, transparent)' }}
                     />
-                )}
+                {/*)}*/}
             </nav>
         </>
     )

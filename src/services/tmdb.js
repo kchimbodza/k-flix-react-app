@@ -11,9 +11,9 @@ export const getTrending = async () => {
     return response.data.results
 }
 
-export const searchMovies = async (query) => {
-    const response = await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`)
-    return response.data.results
+export const searchMovies = async (query, page = 1) => {
+    const response = await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`)
+    return response.data
 }
 
 export const getMovieDetails = async (id) => {

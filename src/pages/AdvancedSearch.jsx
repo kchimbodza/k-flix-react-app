@@ -41,92 +41,118 @@ const AdvancedSearch = () => {
         }
     }
 
+    const inputClass = "w-full p-3 rounded-xl bg-white/10 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors"
+    const selectClass = "w-full p-3 rounded-xl bg-gray-900 border border-white/10 text-white focus:outline-none focus:border-orange-500 transition-colors"
+    const labelClass = "text-gray-400 text-sm mb-2 block"
+
     return (
-        <div className="p-6">
-            <h1 className="text-3xl font-bold text-center text-white mb-6">Advanced Search</h1>
-            <div className="bg-gray-800 rounded-lg p-6 mb-6 grid grid-cols-2 md:grid-cols-3 gap-4">
-                <div>
-                    <label className="text-gray-400 text-sm mb-1 block">Genre</label>
-                    <select
-                        name="genre"
-                        value={filters.genre}
-                        onChange={handleChange}
-                        className="w-full p-2 rounded bg-gray-700 text-white"
-                    >
-                        <option value="">All Genres</option>
-                        {genres.map(genre => (
-                            <option key={genre.id} value={genre.id}>{genre.name}</option>
+        <div className="min-h-screen bg-gray-950 px-16 pt-48 pb-12">
+            {/* Header */}
+            <div className="text-center mb-10">
+                <h1 className="text-4xl font-black text-white mb-2">Advanced Search</h1>
+                <p className="text-gray-400 text-sm">Filter movies by genre, year, rating and language</p>
+            </div>
+
+            {/* Filters */}
+            <div className="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8 mb-10 max-w-5xl mx-auto">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                    <div>
+                        <label className={labelClass}>Genre</label>
+                        <select
+                            name="genre"
+                            value={filters.genre}
+                            onChange={handleChange}
+                            className={selectClass}
+                        >
+                            <option value="">All Genres</option>
+                            {genres.map(genre => (
+                                <option key={genre.id} value={genre.id}>{genre.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <label className={labelClass}>Year From</label>
+                        <input
+                            type="number"
+                            name="yearFrom"
+                            value={filters.yearFrom}
+                            onChange={handleChange}
+                            placeholder="e.g. 2000"
+                            className={inputClass}
+                        />
+                    </div>
+                    <div>
+                        <label className={labelClass}>Year To</label>
+                        <input
+                            type="number"
+                            name="yearTo"
+                            value={filters.yearTo}
+                            onChange={handleChange}
+                            placeholder="e.g. 2026"
+                            className={inputClass}
+                        />
+                    </div>
+                    <div>
+                        <label className={labelClass}>Min Rating</label>
+                        <input
+                            type="number"
+                            name="rating"
+                            value={filters.rating}
+                            onChange={handleChange}
+                            placeholder="e.g. 7"
+                            min="0"
+                            max="10"
+                            className={inputClass}
+                        />
+                    </div>
+                    <div>
+                        <label className={labelClass}>Language</label>
+                        <select
+                            name="language"
+                            value={filters.language}
+                            onChange={handleChange}
+                            className={selectClass}
+                        >
+                            <option value="">All Languages</option>
+                            <option value="en">English</option>
+                            <option value="fr">French</option>
+                            <option value="es">Spanish</option>
+                            <option value="de">German</option>
+                            <option value="ja">Japanese</option>
+                            <option value="ko">Korean</option>
+                        </select>
+                    </div>
+                    <div className="flex items-end">
+                        <button
+                            type="button"
+                            onClick={handleSearch}
+                            className="w-full bg-orange-500 text-white py-3 rounded-full font-bold hover:bg-orange-600 transition-all"
+                        >
+                            Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* States */}
+            {loading && (
+                <p className="text-white text-center animate-pulse text-lg">Searching...</p>
+            )}
+            {error && (
+                <p className="text-gray-400 text-center text-lg">{error}</p>
+            )}
+
+            {/* Results */}
+            {movies.length > 0 && (
+                <>
+                    <p className="text-gray-400 text-sm mb-6">{movies.length} results found</p>
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-10">
+                        {movies.map(movie => (
+                            <MovieCard key={movie.id} movie={movie} />
                         ))}
-                    </select>
-                </div>
-                <div>
-                    <label className="text-gray-400 text-sm mb-1 block">Year From</label>
-                    <input
-                        type="number"
-                        name="yearFrom"
-                        value={filters.yearFrom}
-                        onChange={handleChange}
-                        placeholder="e.g. 2000"
-                        className="w-full p-2 rounded bg-gray-700 text-white"
-                    />
-                </div>
-                <div>
-                    <label className="text-gray-400 text-sm mb-1 block">Year To</label>
-                    <input
-                        type="number"
-                        name="yearTo"
-                        value={filters.yearTo}
-                        onChange={handleChange}
-                        placeholder="e.g. 2024"
-                        className="w-full p-2 rounded bg-gray-700 text-white"
-                    />
-                </div>
-                <div>
-                    <label className="text-gray-400 text-sm mb-1 block">Min Rating</label>
-                    <input
-                        type="number"
-                        name="rating"
-                        value={filters.rating}
-                        onChange={handleChange}
-                        placeholder="e.g. 7"
-                        min="0"
-                        max="10"
-                        className="w-full p-2 rounded bg-gray-700 text-white"
-                    />
-                </div>
-                <div>
-                    <label className="text-gray-400 text-sm mb-1 block">Language</label>
-                    <select
-                        name="language"
-                        value={filters.language}
-                        onChange={handleChange}
-                        className="w-full p-2 rounded bg-gray-700 text-white"
-                    >
-                        <option value="">All Languages</option>
-                        <option value="en">English</option>
-                        <option value="fr">French</option>
-                        <option value="es">Spanish</option>
-                        <option value="de">German</option>
-                        <option value="ja">Japanese</option>
-                        <option value="ko">Korean</option>
-                    </select>
-                </div>
-                <div className="flex items-end">
-                    <button
-                        onClick={handleSearch}
-                        className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700"
-                    >
-                        Search
-                    </button>
-                </div>
-            </div>
-            {loading && <p className="text-white text-center">Loading...</p>}
-            {error && <p className="text-red-500 text-center">{error}</p>}
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                {movies.map(movie => (
-                    <MovieCard key={movie.id} movie={movie} />
-                ))}
-            </div>
+                    </div>
+                </>
+            )}
         </div>
     )
 }

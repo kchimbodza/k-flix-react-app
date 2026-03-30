@@ -65,6 +65,32 @@ const Favourites = () => {
                     ))}
                 </div>
             )}
+            {/* Footer */}
+            <footer className="border-t border-white/10 px-16 py-10 mt-8">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div>
+                        <p className="text-2xl font-black">
+                            <span className="text-orange-500">K</span>
+                            <span className="text-white">-Flix</span>
+                        </p>
+                        <p className="text-gray-500 text-sm mt-1">Your personal movie discovery app</p>
+                    </div>
+                    <div className="flex items-center gap-8 text-sm text-gray-500">
+                        <a href="/" className="hover:text-white transition-colors">Home</a>
+                        <a href="/search" className="hover:text-white transition-colors">Search</a>
+                        <a href="/advanced-search" className="hover:text-white transition-colors">Advanced Search</a>
+                    </div>
+                    <div className="text-center">
+                        <p className="text-gray-500 text-sm">Powered by</p>
+                        <a href="https://www.themoviedb.org" target="_blank" rel="noreferrer" className="text-white font-semibold text-sm hover:text-orange-400 transition-colors">
+                            🎬 The Movie Database (TMDB)
+                        </a>
+                    </div>
+                </div>
+                <div className="border-t border-white/5 mt-8 pt-6 text-center text-white text-xs">
+                    © {new Date().getFullYear()} K-Flix - Designed by <span className="text-orange-500">Kudzayi Chimbodza</span>. Built with React & TMDB API.
+                </div>
+            </footer>
         </div>
     )
 }

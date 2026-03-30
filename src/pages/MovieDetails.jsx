@@ -148,7 +148,7 @@ const MovieDetails = () => {
                 )}
 
                 {/* Content */}
-                <div className="relative z-10 w-full px-16 py-16 flex flex-col md:flex-row gap-10 items-start">
+                <div className="relative z-10 w-full px-16 py-16 flex flex-col md:flex-row gap-10 items-start pt-32">
 
                     {/* Poster */}
                     <div className="flex-shrink-0">

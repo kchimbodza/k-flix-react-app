@@ -126,7 +126,6 @@ const Home = () => {
                     <div className="flex items-center gap-8 text-sm text-gray-500">
                         <a href="/" className="hover:text-white transition-colors">Home</a>
                         <a href="/search" className="hover:text-white transition-colors">Search</a>
-                        <a href="/advanced-search" className="hover:text-white transition-colors">Advanced Search</a>
                     </div>
                     <div className="text-center">
                         <p className="text-gray-500 text-sm">Powered by</p>

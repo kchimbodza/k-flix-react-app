@@ -112,7 +112,7 @@ const Register = () => {
             {/* Footer */}
             <footer className="relative z-10 border-t border-white/10 px-16 py-10 mt-8">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div>
+                    <div className="text-center md:text-left">
                         <p className="text-2xl font-black">
                             <span className="text-orange-500">K</span>
                             <span className="text-white">-Flix</span>

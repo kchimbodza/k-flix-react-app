@@ -65,9 +65,9 @@ const WatchlistDetail = () => {
     )
 
     return (
-        <div className="min-h-screen bg-gray-950 py-12 pt-48">
-            {/* Header — centered */}
-            <div className="max-w-5xl mx-auto px-6 mb-10">
+        <div className="min-h-screen bg-gray-950 flex flex-col py-12 pt-48">
+            {/* Header */}
+            <div className="max-w-5xl mx-auto px-6 mb-10 w-full">
                 <div className="flex items-center justify-between mb-8">
                     <button
                         type="button"
@@ -85,14 +85,15 @@ const WatchlistDetail = () => {
                     </button>
                 </div>
 
-                <h1 className="text-4xl font-bold text-white mb-2">{watchlist.name}</h1>
+                <p className="text-orange-500 text-sm font-semibold uppercase tracking-widest mb-2">Watchlist</p>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">{watchlist.name}</h1>
                 <p className="text-gray-400">
                     {watchlist.movies?.length || 0} {watchlist.movies?.length === 1 ? 'movie' : 'movies'}
                 </p>
             </div>
 
-            {/* Movies grid — full width */}
-            <div className="px-16">
+            {/* Movies grid */}
+            <div className="px-6 md:px-16 flex-1">
                 {watchlist.movies?.length === 0 ? (
                     <div className="text-center py-20">
                         <p className="text-gray-500 text-lg mb-6">No movies in this watchlist yet.</p>
@@ -105,7 +106,7 @@ const WatchlistDetail = () => {
                         </button>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-10">
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
                         {watchlist.movies?.map(movie => (
                             <div key={movie.id}>
                                 <MovieCard movie={movie} showHeartOnHover={true} />
@@ -116,7 +117,7 @@ const WatchlistDetail = () => {
                                         e.stopPropagation()
                                         void handleRemoveMovie(movie.id)
                                     }}
-                                    className="mt-4 w-full bg-white/10 text-white text-lg py-1.5 rounded-lg hover:bg-orange-500/20 hover:text-orange-400 transition-colors"
+                                    className="mt-4 w-full bg-white/10 text-white text-sm md:text-lg py-1.5 rounded-lg hover:bg-orange-500/20 hover:text-orange-400 transition-colors"
                                 >
                                     Remove
                                 </button>
@@ -126,18 +127,10 @@ const WatchlistDetail = () => {
                 )}
             </div>
 
-            {/* Toast notification */}
-            {copied && (
-                <div className="fixed top-24 right-8 z-50 bg-gray-900 border border-orange-500/30 rounded-xl px-5 py-3 shadow-2xl flex items-center gap-3">
-                    <span className="text-orange-500">🔗</span>
-                    <p className="text-white text-sm font-medium">Link copied to clipboard!</p>
-                </div>
-            )}
-
             {/* Footer */}
-            <footer className="border-t border-white/10 px-16 py-10 mt-8">
+            <footer className="border-t border-white/10 px-6 md:px-16 py-10 mt-8">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div>
+                    <div className="text-center md:text-left">
                         <p className="text-2xl font-black">
                             <span className="text-orange-500">K</span>
                             <span className="text-white">-Flix</span>
@@ -160,6 +153,14 @@ const WatchlistDetail = () => {
                     © {new Date().getFullYear()} K-Flix - Designed by <span className="text-orange-500">Kudzayi Chimbodza</span>. Built with React & TMDB API.
                 </div>
             </footer>
+
+            {/* Toast notification */}
+            {copied && (
+                <div className="fixed top-24 right-8 z-50 bg-gray-900 border border-orange-500/30 rounded-xl px-5 py-3 shadow-2xl flex items-center gap-3">
+                    <span className="text-orange-500">🔗</span>
+                    <p className="text-white text-sm font-medium">Link copied to clipboard!</p>
+                </div>
+            )}
         </div>
     )
 }

@@ -56,16 +56,16 @@ const Watchlists = () => {
     )
 
     return (
-        <div className="min-h-screen bg-gray-950 py-12 pt-48">
-            {/* Header and create form — centered */}
-            <div className="max-w-4xl mx-auto px-6">
+        <div className="min-h-screen bg-gray-950 flex flex-col py-12 pt-48">
+            {/* Header and create form */}
+            <div className="max-w-4xl mx-auto px-6 w-full">
                 <h1 className="text-4xl font-bold text-white mb-2 text-center">My Watchlists</h1>
                 <p className="text-gray-400 mb-10 text-center">Organise your movies into custom lists</p>
 
                 {/* Create new watchlist */}
                 <div className="bg-white/5 border border-white/10 backdrop-blur rounded-2xl p-6 mb-10">
                     <h2 className="text-white font-semibold text-lg mb-4">Create New Watchlist</h2>
-                    <div className="flex gap-3">
+                    <div className="flex flex-col sm:flex-row gap-3">
                         <input
                             type="text"
                             value={newName}
@@ -87,12 +87,12 @@ const Watchlists = () => {
                 {error && <p className="text-red-400 mb-6">{error}</p>}
             </div>
 
-            {/* Watchlist grid — full width */}
-            <div className="px-16">
+            {/* Watchlist grid */}
+            <div className="px-6 md:px-16 flex-1">
                 {watchlists.length === 0 ? (
                     <p className="text-gray-500 text-lg text-center">No watchlists yet — create one above!</p>
                 ) : (
-                    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-10">
                         {watchlists.map(watchlist => (
                             <div key={watchlist.id} className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-white/20 transition-colors">
                                 <div className="flex justify-between items-start mb-4">
@@ -148,33 +148,34 @@ const Watchlists = () => {
                         ))}
                     </div>
                 )}
-                {/* Footer */}
-                <footer className="border-t border-white/10 px-16 py-10 mt-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                        <div>
-                            <p className="text-2xl font-black">
-                                <span className="text-orange-500">K</span>
-                                <span className="text-white">-Flix</span>
-                            </p>
-                            <p className="text-gray-500 text-sm mt-1">Your personal movie discovery app</p>
-                        </div>
-                        <div className="flex items-center gap-8 text-sm text-gray-500">
-                            <a href="/" className="hover:text-white transition-colors">Home</a>
-                            <a href="/search" className="hover:text-white transition-colors">Search</a>
-                            <a href="/advanced-search" className="hover:text-white transition-colors">Advanced Search</a>
-                        </div>
-                        <div className="text-center">
-                            <p className="text-gray-500 text-sm">Powered by</p>
-                            <a href="https://www.themoviedb.org" target="_blank" rel="noreferrer" className="text-white font-semibold text-sm hover:text-orange-400 transition-colors">
-                                🎬 The Movie Database (TMDB)
-                            </a>
-                        </div>
-                    </div>
-                    <div className="border-t border-white/5 mt-8 pt-6 text-center text-white text-xs">
-                        © {new Date().getFullYear()} K-Flix - Designed by <span className="text-orange-500">Kudzayi Chimbodza</span>. Built with React & TMDB API.
-                    </div>
-                </footer>
             </div>
+
+            {/* Footer */}
+            <footer className="border-t border-white/10 px-6 md:px-16 py-10 mt-8">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="text-center md:text-left">
+                        <p className="text-2xl font-black">
+                            <span className="text-orange-500">K</span>
+                            <span className="text-white">-Flix</span>
+                        </p>
+                        <p className="text-gray-500 text-sm mt-1">Your personal movie discovery app</p>
+                    </div>
+                    <div className="flex items-center gap-8 text-sm text-gray-500">
+                        <a href="/" className="hover:text-white transition-colors">Home</a>
+                        <a href="/search" className="hover:text-white transition-colors">Search</a>
+                        <a href="/advanced-search" className="hover:text-white transition-colors">Advanced Search</a>
+                    </div>
+                    <div className="text-center">
+                        <p className="text-gray-500 text-sm">Powered by</p>
+                        <a href="https://www.themoviedb.org" target="_blank" rel="noreferrer" className="text-white font-semibold text-sm hover:text-orange-400 transition-colors">
+                            🎬 The Movie Database (TMDB)
+                        </a>
+                    </div>
+                </div>
+                <div className="border-t border-white/5 mt-8 pt-6 text-center text-white text-xs">
+                    © {new Date().getFullYear()} K-Flix - Designed by <span className="text-orange-500">Kudzayi Chimbodza</span>. Built with React & TMDB API.
+                </div>
+            </footer>
         </div>
     )
 }

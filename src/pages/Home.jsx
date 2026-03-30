@@ -55,7 +55,7 @@ const Home = () => {
 
             {/* Hero Section */}
             {hero && (
-                <div className="relative min-h-screen flex items-center pb-32">
+                <div className="relative min-h-screen flex items-center pb-16 md:pb-32">
                     {/* Backdrop */}
                     <div className="absolute inset-0 z-0">
                         <img
@@ -65,34 +65,33 @@ const Home = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/70 to-transparent" />
                         <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent" />
-
                     </div>
 
                     {/* Hero content */}
-                    <div className="relative z-10 px-16 max-w-2xl">
+                    <div className="relative z-10 px-6 md:px-16 max-w-2xl">
                         <div className="flex items-center gap-3 mb-3 text-lg text-gray-300">
                             <span className="text-orange-400">⭐ {hero.vote_average?.toFixed(1)}</span>
                             <span className="text-gray-600">•</span>
                             <span>{hero.release_date?.split('-')[0]}</span>
                         </div>
-                        <h1 className="text-5xl lg:text-8xl font-black text-white mb-4 leading-tight">
+                        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-white mb-4 leading-tight">
                             {hero.title}
                         </h1>
-                        <p className="text-gray-300 text-lg leading-relaxed mb-8 max-w-lg">
+                        <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
                             {hero.overview?.slice(0, 180)}...
                         </p>
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-3 flex-wrap">
                             <button
                                 type="button"
                                 onClick={handleHeroFavourite}
-                                className="bg-orange-500 text-white px-8 py-3 rounded-full font-bold hover:bg-orange-600 transition-all flex items-center gap-2"
+                                className="bg-orange-500 text-white px-6 md:px-8 py-3 rounded-full font-bold hover:bg-orange-600 transition-all flex items-center gap-2"
                             >
                                 {favourited ? '❤️ Remove Favourite' : '🤍 Add to Favourites'}
                             </button>
                             <button
                                 type="button"
                                 onClick={() => navigate(`/movies/${hero.id}`)}
-                                className="bg-white/10 backdrop-blur border border-white/20 text-white px-8 py-3 rounded-full font-semibold hover:bg-white/20 transition-all"
+                                className="bg-white/10 backdrop-blur border border-white/20 text-white px-6 md:px-8 py-3 rounded-full font-semibold hover:bg-white/20 transition-all"
                             >
                                 ℹ️ Details
                             </button>
@@ -102,11 +101,11 @@ const Home = () => {
             )}
 
             {/* Trending Movies */}
-            <div className="px-16 -mt-64 relative z-10 pb-16">
+            <div className="px-4 md:px-16 -mt-32 md:-mt-64 relative z-10 pb-16">
                 <h2 className="text-white text-2xl font-bold mb-6">Trending Movies</h2>
-                <div className="flex gap-10 overflow-x-auto pb-4 custom-scrollbar py-4 pl-2">
+                <div className="flex gap-4 md:gap-10 overflow-x-auto pb-4 custom-scrollbar py-4 pl-2">
                     {featured.map(movie => (
-                        <div key={movie.id} className="flex-shrink-0 w-56">
+                        <div key={movie.id} className="flex-shrink-0 w-36 md:w-56">
                             <MovieCard movie={movie} showHeartOnHover={true} />
                         </div>
                     ))}
@@ -114,9 +113,9 @@ const Home = () => {
             </div>
 
             {/* Footer */}
-            <footer className="border-t border-white/10 px-16 py-10 mt-8">
+            <footer className="border-t border-white/10 px-6 md:px-16 py-10 mt-8">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div>
+                    <div className="text-center md:text-left">
                         <p className="text-2xl font-black">
                             <span className="text-orange-500">K</span>
                             <span className="text-white">-Flix</span>

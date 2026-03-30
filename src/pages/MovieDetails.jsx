@@ -134,7 +134,6 @@ const MovieDetails = () => {
 
             {/* Hero section with backdrop */}
             <div className="relative min-h-[85vh] flex items-center">
-                {/* Backdrop image */}
                 {movie.backdrop_path && (
                     <div className="absolute inset-0 z-0">
                         <img
@@ -148,53 +147,62 @@ const MovieDetails = () => {
                 )}
 
                 {/* Content */}
-                <div className="relative z-10 w-full px-16 py-16 flex flex-col md:flex-row gap-10 items-start pt-32">
+                <div className="relative z-10 w-full px-6 md:px-16 py-16 flex flex-col md:flex-row gap-8 md:gap-10 items-start pt-28 md:pt-32">
 
-                    {/* Poster */}
-                    <div className="flex-shrink-0">
+                    {/* Poster — hidden on mobile */}
+                    <div className="hidden md:block flex-shrink-0">
                         <img
                             src={`${IMAGE_URL}${movie.poster_path}`}
                             alt={movie.title}
-                            className="w-96 lg:w-[480px] rounded-4xl shadow-2xl shadow-black/60 border border-white/10"
+                            className="w-64 lg:w-96 rounded-3xl shadow-2xl shadow-black/60 border border-white/10"
                         />
                     </div>
 
                     {/* Info */}
-                    <div className="flex-1 text-white flex flex-col justify-between" style={{ minHeight: '720px' }}>
-                        <div>
-                            {/* Genre pills */}
-                            <div className="flex gap-2 flex-wrap mb-4">
-                                {movie.genres?.map(genre => (
-                                    <span key={genre.id} className="px-4 py-1 rounded-full text-sm font-medium bg-white/10 backdrop-blur border border-white/20 text-gray-200">
-                                        {genre.name}
-                                    </span>
-                                ))}
-                            </div>
-
-                            {/* Title */}
-                            <h1 className="text-5xl md:text-6xl font-black mb-3 leading-tight tracking-tight">
-                                {movie.title}
-                            </h1>
-
-                            {/* Metadata */}
-                            <p className="text-gray-400 text-lg mb-5 flex items-center gap-2 flex-wrap">
-                                {movie.original_language?.toUpperCase()}
-                                {year && <><span className="text-gray-600">•</span> {year}</>}
-                                {runtime && <><span className="text-gray-600">•</span> {runtime}</>}
-                            </p>
-
-                            {/* Overview */}
-                            <p className="text-gray-300 text-lg leading-relaxed max-w-xl">
-                                {movie.overview}
-                            </p>
+                    <div className="flex-1 text-white flex flex-col justify-between">
+                        {/* Genre pills */}
+                        <div className="flex gap-2 flex-wrap mb-4">
+                            {movie.genres?.map(genre => (
+                                <span key={genre.id} className="px-3 py-1 rounded-full text-sm font-medium bg-white/10 backdrop-blur border border-white/20 text-gray-200">
+                                    {genre.name}
+                                </span>
+                            ))}
                         </div>
 
+                        {/* Title */}
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-3 leading-tight tracking-tight">
+                            {movie.title}
+                        </h1>
+
+                        {/* Metadata */}
+                        <p className="text-gray-400 text-base md:text-lg mb-5 flex items-center gap-2 flex-wrap">
+                            {movie.original_language?.toUpperCase()}
+                            {year && <><span className="text-gray-600">•</span> {year}</>}
+                            {runtime && <><span className="text-gray-600">•</span> {runtime}</>}
+                        </p>
+
+                        {/* Rating — mobile only */}
+                        <div className="flex md:hidden items-center gap-4 mb-5">
+                            <span style={{ color: ratingColor }} className="text-5xl font-black leading-none">
+                                {movie.vote_average?.toFixed(1)}
+                            </span>
+                            <div>
+                                <p className="text-white text-lg">/10</p>
+                                <p className="text-gray-400 text-sm">{movie.vote_count?.toLocaleString()} reviews</p>
+                            </div>
+                        </div>
+
+                        {/* Overview */}
+                        <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-xl mb-6">
+                            {movie.overview}
+                        </p>
+
                         {/* Action buttons */}
-                        <div className="flex items-center gap-3 flex-wrap mt-6">
+                        <div className="flex items-center gap-3 flex-wrap">
                             <button
                                 type="button"
                                 onClick={handleFavourite}
-                                className="flex items-center gap-2 bg-white text-gray-950 px-7 py-3 rounded-full font-bold hover:bg-gray-200 transition-all whitespace-nowrap"
+                                className="flex items-center gap-2 bg-white text-gray-950 px-6 md:px-7 py-3 rounded-full font-bold hover:bg-gray-200 transition-all whitespace-nowrap"
                             >
                                 {favourited ? '❤️ Remove Favourite' : '🤍 Add to Favourites'}
                             </button>
@@ -204,7 +212,7 @@ const MovieDetails = () => {
                                     <button
                                         type="button"
                                         onClick={() => setShowWatchlistMenu(!showWatchlistMenu)}
-                                        className="flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white px-7 py-3 rounded-full font-semibold hover:bg-white/20 transition-all whitespace-nowrap"
+                                        className="flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 text-white px-6 md:px-7 py-3 rounded-full font-semibold hover:bg-white/20 transition-all whitespace-nowrap"
                                     >
                                         ☰ Add to Watchlist
                                     </button>
@@ -243,9 +251,9 @@ const MovieDetails = () => {
                         </div>
                     </div>
 
-                    {/* Rating card */}
-                    <div className="flex-shrink-0 bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-12 text-center min-w-32">
-                        <p style={{ color: ratingColor }} className="text-8xl font-black leading-none">
+                    {/* Rating card — desktop only */}
+                    <div className="hidden md:flex flex-shrink-0 bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-10 text-center min-w-32 flex-col items-center justify-center">
+                        <p style={{ color: ratingColor }} className="text-7xl lg:text-8xl font-black leading-none">
                             {movie.vote_average?.toFixed(1)}
                         </p>
                         <p className="text-white text-xl mt-1">/10</p>
@@ -256,17 +264,45 @@ const MovieDetails = () => {
 
             {/* Similar movies */}
             {similar.length > 0 && (
-                <div className="px-16 pb-16">
+                <div className="px-6 md:px-16 pb-16">
                     <h2 className="text-white text-2xl font-bold mb-5">Similar Movies</h2>
-                    <div className="flex gap-10 overflow-x-auto pb-4 custom-scrollbar py-4 pl-2">
+                    <div className="flex gap-4 md:gap-10 overflow-x-auto pb-4 custom-scrollbar py-4 pl-2">
                         {similar.map(m => (
-                            <div key={m.id} className="flex-shrink-0 w-56">
+                            <div key={m.id} className="flex-shrink-0 w-36 md:w-56">
                                 <MovieCard movie={m} showHeartOnHover={true} />
                             </div>
                         ))}
                     </div>
                 </div>
             )}
+
+            {/* Footer */}
+            <footer className="border-t border-white/10 px-6 md:px-16 py-10">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="text-center md:text-left">
+                        <p className="text-2xl font-black">
+                            <span className="text-orange-500">K</span>
+                            <span className="text-white">-Flix</span>
+                        </p>
+                        <p className="text-gray-500 text-sm mt-1">Your personal movie discovery app</p>
+                    </div>
+                    <div className="flex items-center gap-8 text-sm text-gray-500">
+                        <a href="/" className="hover:text-white transition-colors">Home</a>
+                        <a href="/search" className="hover:text-white transition-colors">Search</a>
+                        <a href="/advanced-search" className="hover:text-white transition-colors">Advanced Search</a>
+                    </div>
+                    <div className="text-center">
+                        <p className="text-gray-500 text-sm">Powered by</p>
+                        <a href="https://www.themoviedb.org" target="_blank" rel="noreferrer" className="text-white font-semibold text-sm hover:text-orange-400 transition-colors">
+                            🎬 The Movie Database (TMDB)
+                        </a>
+                    </div>
+                </div>
+                <div className="border-t border-white/5 mt-8 pt-6 text-center text-white text-xs">
+                    © {new Date().getFullYear()} K-Flix - Designed by <span className="text-orange-500">Kudzayi Chimbodza</span>. Built with React & TMDB API.
+                </div>
+            </footer>
+
             {/* Copy toast */}
             {copied && (
                 <div className="fixed top-24 right-8 z-50 bg-gray-800 border border-orange-500 rounded-xl px-5 py-3 shadow-2xl flex items-center gap-3">

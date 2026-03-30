@@ -51,7 +51,7 @@ const Search = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-950 px-16 pt-48 pb-12">
+        <div className="min-h-screen bg-gray-950 flex flex-col px-6 md:px-16 pt-48 pb-12">
             {/* Header */}
             <div className="text-center mb-10">
                 <h1 className="text-4xl font-black text-white mb-2">Search Movies</h1>
@@ -66,7 +66,7 @@ const Search = () => {
             </div>
 
             {/* Search bar */}
-            <div className="flex gap-3 max-w-2xl mx-auto mb-10">
+            <div className="flex gap-3 max-w-2xl mx-auto mb-10 w-full">
                 <div className="flex-1 relative">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" />
@@ -101,7 +101,7 @@ const Search = () => {
             {movies.length > 0 && (
                 <>
                     <p className="text-gray-400 text-sm mb-6">{movies.length} results loaded</p>
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-10">
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
                         {movies.map(movie => (
                             <MovieCard key={movie.id} movie={movie} />
                         ))}
@@ -124,9 +124,9 @@ const Search = () => {
             )}
 
             {/* Footer */}
-            <footer className="border-t border-white/10 px-16 py-10 mt-8">
+            <footer className="border-t border-white/10 px-6 md:px-16 py-10 mt-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div>
+                    <div className="text-center md:text-left">
                         <p className="text-2xl font-black">
                             <span className="text-orange-500">K</span>
                             <span className="text-white">-Flix</span>
@@ -150,8 +150,6 @@ const Search = () => {
                 </div>
             </footer>
         </div>
-
-
     )
 }
 

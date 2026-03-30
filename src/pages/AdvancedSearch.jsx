@@ -46,16 +46,16 @@ const AdvancedSearch = () => {
     const labelClass = "text-gray-400 text-sm mb-2 block"
 
     return (
-        <div className="min-h-screen bg-gray-950 px-16 pt-48 pb-12">
+        <div className="min-h-screen bg-gray-950 flex flex-col px-6 md:px-16 pt-48 pb-12">
             {/* Header */}
             <div className="text-center mb-10">
-                <h1 className="text-4xl font-black text-white mb-2">Advanced Search</h1>
+                <h1 className="text-3xl md:text-4xl font-black text-white mb-2">Advanced Search</h1>
                 <p className="text-gray-400 text-sm">Filter movies by genre, year, rating and language</p>
             </div>
 
             {/* Filters */}
-            <div className="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-8 mb-10 max-w-5xl mx-auto">
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 md:p-8 mb-10 max-w-5xl mx-auto w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     <div>
                         <label className={labelClass}>Genre</label>
                         <select
@@ -146,17 +146,18 @@ const AdvancedSearch = () => {
             {movies.length > 0 && (
                 <>
                     <p className="text-gray-400 text-sm mb-6">{movies.length} results found</p>
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-10">
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
                         {movies.map(movie => (
                             <MovieCard key={movie.id} movie={movie} />
                         ))}
                     </div>
                 </>
             )}
+
             {/* Footer */}
-            <footer className="border-t border-white/10 px-16 py-10 mt-8">
+            <footer className="border-t border-white/10 px-6 md:px-16 py-10 mt-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div>
+                    <div className="text-center md:text-left">
                         <p className="text-2xl font-black">
                             <span className="text-orange-500">K</span>
                             <span className="text-white">-Flix</span>

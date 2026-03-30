@@ -8,7 +8,7 @@ const Favourites = () => {
     const { user } = useAuth()
 
     return (
-        <div className="min-h-screen bg-gray-950 px-16 pt-48 pb-12">
+        <div className="min-h-screen bg-gray-950 flex flex-col px-6 md:px-16 pt-48 pb-12">
             {/* Header */}
             <div className="mb-10 flex items-center gap-4">
                 <button
@@ -21,7 +21,8 @@ const Favourites = () => {
                     </svg>
                 </button>
                 <div>
-                    <h1 className="text-4xl font-black text-white mb-1">My Favourites</h1>
+                    <p className="text-orange-500 text-sm font-semibold uppercase tracking-widest mb-1">Library</p>
+                    <h1 className="text-3xl md:text-4xl font-black text-white mb-1">My Favourites</h1>
                     <p className="text-gray-400 text-sm">
                         {favourites.length > 0 ? `${favourites.length} movie${favourites.length === 1 ? '' : 's'} saved` : ''}
                     </p>
@@ -29,7 +30,7 @@ const Favourites = () => {
             </div>
 
             {favourites.length === 0 ? (
-                <div className="flex flex-col items-center justify-center mt-32 text-center">
+                <div className="flex flex-col items-center justify-center mt-32 text-center flex-1">
                     <p className="text-7xl mb-6">❤️</p>
                     <h2 className="text-2xl font-bold text-white mb-3">No favourites yet</h2>
                     {user ? (
@@ -59,16 +60,17 @@ const Favourites = () => {
                     )}
                 </div>
             ) : (
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-10">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 flex-1">
                     {favourites.map(movie => (
                         <MovieCard key={movie.id} movie={movie} />
                     ))}
                 </div>
             )}
+
             {/* Footer */}
-            <footer className="border-t border-white/10 px-16 py-10 mt-8">
+            <footer className="border-t border-white/10 px-6 md:px-16 py-10 mt-8">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div>
+                    <div className="text-center md:text-left">
                         <p className="text-2xl font-black">
                             <span className="text-orange-500">K</span>
                             <span className="text-white">-Flix</span>

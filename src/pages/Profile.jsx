@@ -15,25 +15,25 @@ const Profile = () => {
     }, [user.id])
 
     return (
+        <div className="min-h-screen bg-gray-950 flex flex-col py-12 pt-48">
+            <div className="max-w-5xl mx-auto px-6 w-full">
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">My Profile</h1>
 
-        <div className="min-h-screen bg-gray-950 py-12 pt-48">
-            <div className="max-w-5xl mx-auto px-6">
-                <h1 className="text-4xl font-bold text-white mb-8 text-center">My Profile</h1>
                 {/* User Info */}
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-8 mb-10 flex items-center gap-6">
-                    <div className="w-16 h-16 rounded-full bg-orange-500 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 mb-10 flex items-center gap-6">
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-orange-500 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
                         {user?.name?.charAt(0).toUpperCase()}
                     </div>
                     <div>
-                        <h1 className="text-3xl font-bold text-white mb-1">{user?.name}</h1>
-                        <p className="text-gray-400">{user?.email}</p>
+                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-1">{user?.name}</h2>
+                        <p className="text-gray-400 text-sm md:text-base">{user?.email}</p>
                     </div>
                 </div>
 
                 {/* Watchlists */}
                 <div className="mb-10">
                     <div className="flex justify-between items-center mb-6">
-                        <h2 className="text-2xl font-bold text-white">My Watchlists</h2>
+                        <h2 className="text-xl md:text-2xl font-bold text-white">My Watchlists</h2>
                         <Link to="/watchlists" className="text-orange-400 hover:text-orange-300 text-sm transition-colors">
                             Manage Watchlists →
                         </Link>
@@ -45,7 +45,7 @@ const Profile = () => {
                             </Link>
                         </p>
                     ) : (
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                             {watchlists.map(watchlist => (
                                 <Link
                                     key={watchlist.id}
@@ -65,7 +65,7 @@ const Profile = () => {
                 {/* Favourites */}
                 <div>
                     <div className="flex justify-between items-center mb-6">
-                        <h2 className="text-2xl font-bold text-white">My Favourites</h2>
+                        <h2 className="text-xl md:text-2xl font-bold text-white">My Favourites</h2>
                         <Link to="/favorites" className="text-orange-400 hover:text-orange-300 text-sm transition-colors">
                             See All →
                         </Link>
@@ -81,10 +81,11 @@ const Profile = () => {
                     )}
                 </div>
             </div>
+
             {/* Footer */}
-            <footer className="border-t border-white/10 px-16 py-10 mt-8">
+            <footer className="border-t border-white/10 px-6 md:px-16 py-10 mt-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div>
+                    <div className="text-center md:text-left">
                         <p className="text-2xl font-black">
                             <span className="text-orange-500">K</span>
                             <span className="text-white">-Flix</span>

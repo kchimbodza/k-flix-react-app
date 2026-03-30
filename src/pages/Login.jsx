@@ -95,7 +95,7 @@ const Login = () => {
             {/* Footer */}
             <footer className="relative z-10 border-t border-white/10 px-16 py-10 mt-8">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div>
+                    <div className="text-center md:text-left">
                         <p className="text-2xl font-black">
                             <span className="text-orange-500">K</span>
                             <span className="text-white">-Flix</span>
@@ -105,7 +105,7 @@ const Login = () => {
                     <div className="flex items-center gap-8 text-sm text-gray-500">
                         <a href="/" className="hover:text-white transition-colors">Home</a>
                         <a href="/search" className="hover:text-white transition-colors">Search</a>
-                        {/*<a href="/advanced-search" className="hover:text-white transition-colors">Advanced Search</a>*/}
+
                     </div>
                     <div className="text-center">
                         <p className="text-gray-500 text-sm">Powered by</p>

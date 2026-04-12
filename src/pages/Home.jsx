@@ -101,7 +101,7 @@ const Home = () => {
             )}
 
             {/* Trending Movies */}
-            <div className="px-4 md:px-16 -mt-32 md:-mt-64 relative z-10 pb-16">
+            <div className="px-4 md:px-16 -mt-8 md:-mt-32 relative z-10 pb-16">
                 <h2 className="text-white text-2xl font-bold mb-6">Trending Movies</h2>
                 <div className="flex gap-4 md:gap-10 overflow-x-auto pb-4 custom-scrollbar py-4 pl-2">
                     {featured.map(movie => (

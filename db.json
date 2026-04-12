@@ -11,6 +11,12 @@
       "email": "tom@tom.com",
       "password": "123456",
       "id": "eUA-WW4SynI"
+    },
+    {
+      "name": "Ron Don",
+      "email": "ron@don.com",
+      "password": "123456",
+      "id": "lqx-CsmgfpE"
     }
   ],
   "favourites": [
@@ -632,6 +638,29 @@
       "video": false,
       "vote_average": 7.3,
       "vote_count": 1964
+    },
+    {
+      "userId": "lqx-CsmgfpE",
+      "movieId": 83533,
+      "adult": false,
+      "backdrop_path": "/iN41Ccw4DctL8npfmYg1j5Tr1eb.jpg",
+      "id": "4gUmmpzSbto",
+      "title": "Avatar: Fire and Ash",
+      "original_title": "Avatar: Fire and Ash",
+      "overview": "In the wake of the devastating war against the RDA and the loss of their eldest son, Jake Sully and Neytiri face a new threat on Pandora: the Ash People, a violent and power-hungry Na'vi tribe led by the ruthless Varang. Jake's family must fight for their survival and the future of Pandora in a conflict that pushes them to their emotional and physical limits.",
+      "poster_path": "/bRBeSHfGHwkEpImlhxPmOcUsaeg.jpg",
+      "media_type": "movie",
+      "original_language": "en",
+      "genre_ids": [
+        878,
+        12,
+        14
+      ],
+      "popularity": 544.8659,
+      "release_date": "2025-12-17",
+      "video": false,
+      "vote_average": 7.349,
+      "vote_count": 2273
     }
   ],
   "watchlists": [
@@ -1966,7 +1995,148 @@
     {
       "userId": "2I1pxhMALW0",
       "name": "ron",
-      "movies": [],
+      "movies": [
+        {
+          "adult": false,
+          "backdrop_path": "/vrjYmiCYa5ZcViMHYq73rctvtnl.jpg",
+          "belongs_to_collection": null,
+          "budget": 0,
+          "genres": [
+            {
+              "id": 10749,
+              "name": "Romance"
+            },
+            {
+              "id": 28,
+              "name": "Action"
+            },
+            {
+              "id": 18,
+              "name": "Drama"
+            }
+          ],
+          "homepage": "",
+          "id": 358996,
+          "imdb_id": "tt4467202",
+          "origin_country": [
+            "IN"
+          ],
+          "original_language": "hi",
+          "original_title": "Hero",
+          "overview": "After meeting the chief of police's pretty daughter, a gangster kidnaps the girl. During the journey they fall in love and the gangster decides to set her free.",
+          "popularity": 1.5407,
+          "poster_path": "/esBeEnXx8tSCcGF4DKwwESxsAp8.jpg",
+          "production_companies": [
+            {
+              "id": 3725,
+              "logo_path": null,
+              "name": "Mukta Arts Ltd",
+              "origin_country": "IN"
+            },
+            {
+              "id": 59294,
+              "logo_path": "/eNG6SYSrJZgXpqo1l7UwvuWio76.png",
+              "name": "Salman Khan Films",
+              "origin_country": "IN"
+            },
+            {
+              "id": 72146,
+              "logo_path": "/sQtwtEOpIdL7ux7oYoU4bdx9g5J.png",
+              "name": "Emmay Entertainment",
+              "origin_country": "IN"
+            }
+          ],
+          "production_countries": [
+            {
+              "iso_3166_1": "IN",
+              "name": "India"
+            }
+          ],
+          "release_date": "2015-09-11",
+          "revenue": 5000000,
+          "runtime": 145,
+          "spoken_languages": [
+            {
+              "english_name": "Hindi",
+              "iso_639_1": "hi",
+              "name": "हिन्दी"
+            }
+          ],
+          "status": "Released",
+          "tagline": "Rebels. Love. Freedom",
+          "title": "Hero",
+          "video": false,
+          "vote_average": 5.79,
+          "vote_count": 31
+        },
+        {
+          "adult": false,
+          "backdrop_path": "/uNToXatdunyvWXyXMrTI1nLvh6r.jpg",
+          "belongs_to_collection": null,
+          "budget": 0,
+          "genres": [
+            {
+              "id": 35,
+              "name": "Comedy"
+            },
+            {
+              "id": 878,
+              "name": "Science Fiction"
+            },
+            {
+              "id": 80,
+              "name": "Crime"
+            }
+          ],
+          "homepage": "https://www.20thcenturystudios.com/movies/mike-and-nick-and-nick-and-alice",
+          "id": 1115544,
+          "imdb_id": "tt27552099",
+          "origin_country": [
+            "US"
+          ],
+          "original_language": "en",
+          "original_title": "Mike & Nick & Nick & Alice",
+          "overview": "Two gangsters and the woman they love try to survive the most dangerous night of their lives. As if that wasn’t enough, there’s one wild ingredient added to the mix: a time machine.",
+          "popularity": 382.9232,
+          "poster_path": "/7F0jc75HrSkLVcvOXR2FXAIwuEv.jpg",
+          "production_companies": [
+            {
+              "id": 127928,
+              "logo_path": "/h0rjX5vjW5r8yEnUBStFarjcLT4.png",
+              "name": "20th Century Studios",
+              "origin_country": "US"
+            },
+            {
+              "id": 1757,
+              "logo_path": "/fc9qw5GoTbyWGa0QcfbsZFzuMKQ.png",
+              "name": "Mad Chance",
+              "origin_country": "US"
+            }
+          ],
+          "production_countries": [
+            {
+              "iso_3166_1": "US",
+              "name": "United States of America"
+            }
+          ],
+          "release_date": "2026-03-14",
+          "revenue": 0,
+          "runtime": 107,
+          "spoken_languages": [
+            {
+              "english_name": "English",
+              "iso_639_1": "en",
+              "name": "English"
+            }
+          ],
+          "status": "Released",
+          "tagline": "A time-traveling, double-crossing, ass-kicking comedy.",
+          "title": "Mike & Nick & Nick & Alice",
+          "video": false,
+          "vote_average": 6.461,
+          "vote_count": 64
+        }
+      ],
       "id": "PFNXYlyOzZU"
     },
     {

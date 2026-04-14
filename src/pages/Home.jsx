@@ -68,13 +68,13 @@ const Home = () => {
                     </div>
 
                     {/* Hero content */}
-                    <div className="relative z-10 px-6 md:px-16 max-w-2xl">
+                    <div className="relative z-10 px-6 md:px-16 max-w-2xl pt-24 landscape:pt-32 md:pt-0">
                         <div className="flex items-center gap-3 mb-3 text-lg text-gray-300">
                             <span className="text-orange-400">⭐ {hero.vote_average?.toFixed(1)}</span>
                             <span className="text-gray-600">•</span>
                             <span>{hero.release_date?.split('-')[0]}</span>
                         </div>
-                        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-white mb-4 leading-tight">
+                        <h1 className="text-2xl md:text-4xl lg:text-6xl font-black text-white mb-1 leading-tight">
                             {hero.title}
                         </h1>
                         <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
@@ -101,7 +101,7 @@ const Home = () => {
             )}
 
             {/* Trending Movies */}
-            <div className="px-4 md:px-16 -mt-8 md:-mt-32 relative z-10 pb-16">
+            <div className="px-4 md:px-16 -mt-8 md:-mt-16 relative z-10 pb-16">
                 <h2 className="text-white text-2xl font-bold mb-6">Trending Movies</h2>
                 <div className="flex gap-4 md:gap-10 overflow-x-auto pb-4 custom-scrollbar py-4 pl-2">
                     {featured.map(movie => (

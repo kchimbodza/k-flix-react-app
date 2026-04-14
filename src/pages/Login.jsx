@@ -37,7 +37,7 @@ const Login = () => {
             <PosterBackground />
 
             {/* Login Card */}
-            <div className="relative z-10 flex-1 flex items-center justify-center">
+            <div className="relative z-10 flex-1 flex items-center justify-center pt-32">
                 <div className="w-full max-w-md mx-4">
                     <div className="text-center mb-8">
                         <Link to="/" className="text-4xl font-black tracking-tight">

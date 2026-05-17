@@ -1,5 +1,4 @@
 # K-Flix 🎬
-
 A movie discovery and watchlist management app built with React 19 and Vite, powered by the TMDB API.
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react)](https://react.dev)
@@ -20,6 +19,28 @@ A movie discovery and watchlist management app built with React 19 and Vite, pow
 
 ---
 
+## Screenshots
+
+![Home](screenshots/home.png)
+*Hero banner with trending movies*
+
+![Search](screenshots/search.png)
+*Keyword search with genre, year, rating, and language filters*
+
+![Movie Details](screenshots/movie-details.png)
+*Full detail page with overview, genres, and ratings*
+
+![Favourites](screenshots/favourites.png)
+*Personal favourites list*
+
+![Watchlists](screenshots/watchlists.png)
+*Create and manage watchlists — shareable with other users*
+
+![Login](screenshots/login.png)
+*User login with protected route handling*
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
@@ -35,6 +56,7 @@ A movie discovery and watchlist management app built with React 19 and Vite, pow
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js v18+
 - npm
 - Free [TMDB API key](https://www.themoviedb.org/settings/api)

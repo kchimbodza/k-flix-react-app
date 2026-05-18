@@ -42,18 +42,36 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      - name: Build Docker image
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, tag and push image to ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: k-flix
+          IMAGE_TAG: ${{ github.sha }}
         run: |
           docker build \
             --build-arg VITE_TMDB_API_KEY=${{ secrets.VITE_TMDB_API_KEY }} \
             --build-arg VITE_TMDB_BASE_URL=${{ secrets.VITE_TMDB_BASE_URL }} \
             --build-arg VITE_TMDB_IMAGE_URL=${{ secrets.VITE_TMDB_IMAGE_URL }} \
-            -t k-flix:${{ github.sha }} .
+            -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
       - name: Run Trivy vulnerability scan
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: k-flix:${{ github.sha }}
+          image-ref: ${{ steps.login-ecr.outputs.registry }}/k-flix:${{ github.sha }}
           format: table
           exit-code: '0'
           severity: CRITICAL,HIGH

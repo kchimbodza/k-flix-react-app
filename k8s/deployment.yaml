@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k-flix
+  namespace: k-flix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k-flix
+  template:
+    metadata:
+      labels:
+        app: k-flix
+    spec:
+      containers:
+        - name: k-flix
+          image: 515310961810.dkr.ecr.us-east-2.amazonaws.com/k-flix:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"

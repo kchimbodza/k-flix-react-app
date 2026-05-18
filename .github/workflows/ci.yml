@@ -37,7 +37,7 @@ jobs:
           VITE_TMDB_IMAGE_URL: ${{ secrets.VITE_TMDB_IMAGE_URL }}
 
       - name: SonarCloud scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -51,7 +51,7 @@ jobs:
             -t k-flix:${{ github.sha }} .
 
       - name: Run Trivy vulnerability scan
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: k-flix:${{ github.sha }}
           format: table

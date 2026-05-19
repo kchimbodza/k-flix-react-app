@@ -13,6 +13,16 @@ spec:
       labels:
         app: k-flix
     spec:
+      initContainers:
+        - name: init-db
+          image: busybox
+          command: ['sh', '-c', 'cp /config/db.json /data/db.json']
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+            - name: db-volume
+              mountPath: /data
+
       containers:
         - name: k-flix
           image: 515310961810.dkr.ecr.us-east-2.amazonaws.com/k-flix:latest
@@ -43,6 +53,8 @@ spec:
               cpu: "100m"
 
       volumes:
-        - name: db-volume
+        - name: config-volume
           configMap:
             name: k-flix-db
+        - name: db-volume
+          emptyDir: {}

@@ -37,3 +37,4 @@ awscliv2.zip
 terraform_*.zip
 terraform_*.txt
 LICENSE.txt
+alertmanager-slack.yaml

@@ -62,7 +62,7 @@ A movie discovery and watchlist management app built with React 19 and Vite, pow
 | ❌ fixed | CI set-up failures | Run 1 failed at the SonarCloud step (exit code 3). Runs 2 and 3 could not start: `aquasecurity/trivy-action@0.28.0` and `@0.36.0` do not exist; the tag needs a `v` (`v0.36.0`). |
 | ⚠️ limit | Not real authentication | Passwords are stored in plain text in `db.json`, and login downloads the user list and compares in the browser. Fine for a demo, not for production. |
 | ⚠️ limit | Small test suite | 3 smoke tests check that `App` renders, with every page mocked. |
-| ⚠️ limit | Local `/api` needs a proxy | `api.js` now calls `/api`, but `vite.config.js` has no dev proxy. With `npm start`, `/api/users` returns the app's `index.html` (checked 13 Nov 2026), so login and watchlists only work behind nginx until a Vite proxy to `localhost:3001` is added. |
+| ✅ fixed | Local login was broken | After `api.js` moved to `/api` for nginx, `npm run dev` had no matching proxy, so `/api/users` returned the app's `index.html` and login failed. `vite.config.js` now proxies `/api` to json-server on `localhost:3001` like nginx does (checked 13 Nov 2026: `/api/users` returns JSON, a watchlist POST returns 201). |
 | ⚠️ limit | Data resets on pod restart | On Kubernetes, json-server writes to an `emptyDir` volume, so new users and watchlists are lost when the pod restarts. |
 
 ---
@@ -146,7 +146,7 @@ Open [http://localhost:5173](http://localhost:5173)
 
 ## Notes
 
-- JSON Server runs on port 3001 and must be started separately (see the `/api` proxy note above for local runs)
+- JSON Server runs on port 3001 and must be started separately (`npm run server`); Vite forwards `/api` to it, as nginx does in the container
 - Passwords are stored in plain text in `db.json` — this is a development demo, not production-ready auth
 
 ---

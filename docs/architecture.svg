@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" width="960" height="330" role="img" aria-labelledby="t d">
+  <title id="t">K-Flix app architecture</title>
+  <desc id="d">The browser runs a React 19 single-page app with React Router (10 routes, 5 protected), an AuthContext that keeps the logged-in user in localStorage, and a FavouritesContext. Movie data comes straight from the TMDB API over HTTPS through tmdb.js: trending, search, discover, details, similar and genres. User data goes through api.js to /api/, which nginx proxies to a json-server sidecar on localhost:3001 that stores users, favourites and watchlists. The same repo also has the delivery pipeline: GitHub Actions tests, builds, scans and pushes an image to ECR, and ArgoCD deploys it to EKS.</desc>
+  <style>
+    :root { --ink:#1f2937; --sub:#57606a; --line:#d0d7de; --card:#ffffff; --on:#ea580c; --tint:#fff4ec; --group:#f6f8fa; }
+    @media (prefers-color-scheme: dark) {
+      :root { --ink:#e6edf3; --sub:#9198a1; --line:#3d444d; --card:#161b22; --on:#fb923c; --tint:#2a1d14; --group:#0d1117; }
+    }
+    text { font-family: Inter, "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif; }
+    .title { font-size:14.5px; font-weight:700; fill:var(--ink); text-anchor:middle; }
+    .sub   { font-size:11px; fill:var(--sub); text-anchor:middle; }
+    .pill-t{ font-size:12px; font-weight:600; fill:var(--ink); text-anchor:middle; }
+    .lbl   { font-size:10.5px; fill:var(--sub); text-anchor:middle; }
+    .node  { fill:var(--card); stroke:var(--line); stroke-width:1.5; }
+    .hub   { fill:var(--tint); stroke:var(--on); stroke-width:1.5; }
+    .group { fill:var(--group); stroke:var(--line); stroke-width:1.5; stroke-dasharray:5 4; }
+    .wire  { stroke:var(--line); stroke-width:1.5; fill:none; }
+    .flow  { stroke:var(--on); stroke-width:2; fill:none; stroke-dasharray:3 11; animation: dash 1.1s linear infinite; }
+    @keyframes dash { to { stroke-dashoffset:-14; } }
+    .head  { fill:var(--line); }
+    @media (prefers-reduced-motion: reduce) { .flow { animation:none; } }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="head" d="M0 0 L10 5 L0 10z"/></marker>
+  </defs>
+
+  <!-- wires -->
+  <path class="wire" d="M360 75 H618" marker-end="url(#a)"/>  <path class="flow" d="M360 75 H612"/>
+  <path class="wire" d="M360 175 H428" marker-end="url(#a)"/> <path class="flow" d="M360 175 H422"/>
+  <path class="wire" d="M630 175 H698" marker-end="url(#a)"/> <path class="flow" d="M630 175 H692"/>
+  <text class="lbl" x="489" y="66">HTTPS + API key (axios)</text>
+  <text class="lbl" x="394" y="166">/api/*</text>
+  <text class="lbl" x="664" y="166">:3001</text>
+
+  <!-- Browser group -->
+  <rect class="group" x="20" y="25" width="340" height="190" rx="14"/>
+  <text class="title" x="190" y="48">Browser · React 19 SPA (Vite)</text>
+  <rect class="node" x="40" y="60"  width="300" height="30" rx="8"/><text class="pill-t" x="190" y="80">React Router v7 · 10 routes, 5 protected</text>
+  <rect class="node" x="40" y="100" width="300" height="30" rx="8"/><text class="pill-t" x="190" y="120">AuthContext · user kept in localStorage</text>
+  <rect class="node" x="40" y="140" width="300" height="30" rx="8"/><text class="pill-t" x="190" y="160">FavouritesContext · guest + per-user</text>
+  <rect class="hub"  x="40" y="180" width="300" height="26" rx="8"/><text class="pill-t" x="190" y="198">services: tmdb.js · api.js</text>
+
+  <!-- TMDB -->
+  <rect class="node" x="620" y="35" width="320" height="80" rx="12"/>
+  <text class="title" x="780" y="64">TMDB API</text>
+  <text class="sub" x="780" y="84">trending · search · discover (filters)</text>
+  <text class="sub" x="780" y="100">details · similar · genres</text>
+
+  <!-- nginx -->
+  <rect class="node" x="430" y="135" width="200" height="80" rx="12"/>
+  <text class="title" x="530" y="164">nginx</text>
+  <text class="sub" x="530" y="184">serves the build, SPA routing</text>
+  <text class="sub" x="530" y="200">proxies /api/ to json-server</text>
+
+  <!-- json-server -->
+  <rect class="node" x="700" y="135" width="240" height="80" rx="12"/>
+  <text class="title" x="820" y="164">json-server (sidecar)</text>
+  <text class="sub" x="820" y="184">REST over db.json</text>
+  <text class="sub" x="820" y="200">users · favourites · watchlists</text>
+
+  <!-- delivery -->
+  <rect class="group" x="20" y="240" width="920" height="70" rx="14"/>
+  <text class="title" x="480" y="268">Delivery (in this repo): GitHub Actions → ECR → ArgoCD → EKS</text>
+  <text class="sub" x="480" y="290">Vitest · Vite build · SonarCloud · Docker push · Trivy; nginx and json-server run as one pod. Full write-up: k-flix-devops-cicd-pipeline</text>
+</svg>
